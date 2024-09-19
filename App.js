@@ -1,15 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-const parent = React.createElement('div', {id: 'parent'},
-	React.createElement('div', {id: 'child'},
-		[React.createElement('h1', {}, 'Hello World from React World!'), React.createElement('p', {}, 'This is a Brijesh Singh')]
-	),
-	React.createElement('div', {id: 'child'},
-		[React.createElement('h1', {}, 'HGreeting from Mars!'), React.createElement('p', {}, 'This is a Ballia')]
-	),
-	
-);
 
-const root = ReactDOM.createRoot( document.getElementById('root'));
-root.render(parent);
+// React.createElement => Object => HTMLElement(rendered on the DOM)
+const heading = React.createElement('h1', {id: "heading"}, 'Hello World!');
+console.log(heading);
 
+// JSX => JavaScript XML , syntactic sugar for React.createElement
+// JSX (Transpiled before it reaches the JS Engine) - Done by Babel(javascript complier ) inside Parcel
+// JSX => React.createElement => ReactElement - JS Object => HTMLElement(rendered on the DOM)
+
+const jsxHeading = <h1 id="heading" className='head'>Namaste React using JSX</h1>;
+console.log(jsxHeading);
+
+
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+root.render(jsxHeading);
