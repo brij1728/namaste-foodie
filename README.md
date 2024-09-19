@@ -1,8 +1,7 @@
 # namaste-react
 
-
-
 # Parcel
+
 - Dev Build
 - Local Build
 - HMR (Hot Module Replacement)
