@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "This Namaste React learning",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "lint": "eslint.",
+    "format": "prettier --write.",
+    "precommit": "lint-staged",
+    "prepare": "husky install",
     "test": "jest"
   },
   "repository": {
