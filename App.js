@@ -1,41 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import foodLogo from './assets/food_logo.png';
 
-// React Element
+/*
+* Header Component
+*   - Logo
+*   - Nav Items
+* Body
+*  - Search
+*  - Restaurant Container
+*    - Restaurant Card
+* Footer
+*  - Copy Right
+*  - Social Links
+*  - Address
+*  - Contact Us
+*/ 
 
+const Header = () => {
+  return (
+    <header>
+      <div class="logo">
+        <img src={foodLogo} alt="logo"  className=''/>
+      </div>
+      <nav>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+    </header>
+  );
+}
 
-const elem = <span>React Element</span>;
-
-const title = (
-  <h1 id="title" className="title">
-    {elem}
-    Namaste React
-    
-  </h1>
-)
-
-// React functional component
-const Title = () => (
-  <h1 id="title" className="title">
-    Namaste React using JSX
-  </h1>
-);
-
-const number = 10;
-
-const HeadingComponent = () => (
-  <div id="container">
-    {Title()}
-    <Title />
-    <Title></Title>
-    {title}
-    <h2>{number}</h2>
-    <h1 id="heading" className="head">
-      Namaste React using Functional Component
-    </h1>
-  </div>
-);
+const AppLayout = () => {
+  return (
+    <div className="app">
+      <Header />
+      {/* <Body />
+      <Footer /> */}
+    </div>
+  );
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-root.render(<HeadingComponent />);
+root.render(<AppLayout />);
