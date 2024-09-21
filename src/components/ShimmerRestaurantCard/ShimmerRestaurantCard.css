@@ -1,0 +1,76 @@
+/* Container for the shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -500px 0;
+  }
+  100% {
+    background-position: 500px 0;
+  }
+}
+
+/* Shimmer base */
+.shimmer-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.shimmer {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, #f0f0f0 0%, #e0e0e0 20%, #f0f0f0 40%, #f0f0f0 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Shimmer card structure */
+.restaurant-card {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  transition: transform 0.2s ease-in-out;
+}
+
+.restaurant-card:hover {
+  transform: translateY(-5px); /* Lift on hover */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.image-container {
+  width: 100%;
+  height: 160px; /* Same size as the regular card image */
+  background-color: #f0f0f0;
+  position: relative;
+}
+
+.card-content {
+  padding: 10px;
+  text-align: left;
+}
+
+.shimmer-title,
+.shimmer-text {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+.shimmer-title {
+  width: 70%;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.shimmer-text {
+  width: 90%;
+  height: 15px;
+  margin-bottom: 8px;
+}
+
+.shimmer-address {
+  width: 60%;
+  height: 15px;
+}
