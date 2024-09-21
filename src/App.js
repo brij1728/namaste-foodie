@@ -2,14 +2,13 @@ import {Footer, Header, RestaurantList, Search} from './components';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { restaurantList } from './data/restaurantList';
 
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
       <Search />
-      <RestaurantList restaurants={restaurantList}  />
+      <RestaurantList   />
       <Footer />
     </div>
   );
