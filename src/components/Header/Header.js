@@ -21,6 +21,7 @@ export const Header = () => {
           <li>Home</li>
           <li>About</li>
           <li>Contact</li>
+          <li>Login</li>
         </ul>
       </div>
       <div className="hamburger" onClick={toggleMenu}>
