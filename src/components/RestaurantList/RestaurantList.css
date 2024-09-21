@@ -25,7 +25,7 @@
 }
 
 .top-rated-button {
-  padding: 20px;
+  padding: 10px 20px;
   background-color: #ff5722;
   color: white;
   border: none;
@@ -34,6 +34,7 @@
   font-size: 16px;
   transition: background-color 0.3s ease;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 .top-rated-button:hover {
