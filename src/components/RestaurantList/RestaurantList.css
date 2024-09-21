@@ -1,4 +1,3 @@
-/* Restaurant list container */
 .restaurant-list-container {
   padding: 20px;
   max-width: 1200px;
@@ -6,49 +5,48 @@
   width: 100%;
 }
 
-/* Header container for search and top-rated button */
+@media screen and (max-width: 768px) {
+  .restaurant-list-container {
+    padding: 10px;
+    justify-content: center;
+  }
+  
+}
+
 .restaurant-list-header {
   display: flex;
-  justify-content: space-between; /* Align button to the left and search bar to the right */
+  justify-content: space-between; 
   align-items: center;
   margin-bottom: 20px;
   gap: 20px;
   width: 100%;
 }
 
-/* Responsive for smaller screens */
 @media screen and (max-width: 768px) {
   .restaurant-list-header {
-    flex-direction: column; /* Stack search and button vertically on mobile */
+    flex-direction: column; 
     gap: 10px;
     justify-content: center;
-    align-items: center; /* Center both elements for small screens */
+    align-items: center; 
   }
 
   .top-rated-button {
-    align-self: flex-end; /* Move button to the right on smaller screens */
+    align-self: flex-end; 
   }
 }
 
-/* Styling the search input */
-.search-input {
-  width: 100%;
-  max-width: 400px;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  text-align: left;
+.restaurant-search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
+
 
 .top-rated-button-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-/* Top-rated button */
 .top-rated-button {
   padding: 12px 20px;
   background-color: #ff5722;
@@ -59,10 +57,9 @@
   font-size: 16px;
   transition: background-color 0.3s ease, transform 0.2s ease;
   white-space: nowrap;
-  margin-left: 0; /* Stay left-aligned */
+  margin-left: 0; 
 }
 
-/* Hover effect on the button */
 .top-rated-button:hover {
   background-color: #e64a19;
   transform: translateY(-2px);
@@ -73,20 +70,13 @@
   transform: translateY(0);
 }
 
-.restaurant-search {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
 
-/* Restaurant grid layout */
 .restaurant-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 20px;
 }
 
-/* Shimmer restaurant card placeholder */
 .shimmer-restaurant-card {
   width: 100%;
   height: 200px;

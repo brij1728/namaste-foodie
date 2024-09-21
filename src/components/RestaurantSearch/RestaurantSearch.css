@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .search-input {
@@ -12,6 +12,7 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
+  margin: 0;
 }
 
 .search-results {

@@ -69,16 +69,16 @@ export const RestaurantList = () => {
   return (
     <div className="restaurant-list-container">
       <div className="restaurant-list-header">
-        <div className="top-rated-button-container">
-          <button className="top-rated-button" onClick={handleTopRated}>
-            {topRated ? 'Show All Restaurants' : 'Show Top Rated Restaurants'}
-          </button>
-        </div>
-        <div className='restaurant-search'>
+        <div className="restaurant-search">
           <RestaurantSearch
             restaurantData={restaurantData}
             onSearchResults={handleSearchResults}
           />
+        </div>
+        <div className="top-rated-button-container">
+          <button className="top-rated-button" onClick={handleTopRated}>
+            {topRated ? 'Show All Restaurants' : 'Show Top Rated Restaurants'}
+          </button>
         </div>
       </div>
 
