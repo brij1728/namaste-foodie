@@ -1,22 +1,24 @@
-/* Footer container */
 .footer {
   background-color: #333;
   color: white;
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* Align items to the top */
+  align-items: flex-start; 
   flex-wrap: wrap;
   text-align: left;
+  max-width: 1200px; 
+  margin: 0 auto; 
+  width: 100%; 
 }
 
 .footer-section {
   flex: 1;
   margin: 10px;
-  min-width: 200px; /* Prevent sections from becoming too narrow */
+  min-width: 200px; 
 }
 
-/* Social links styling */
+
 .social-links ul {
   list-style-type: none;
   padding: 0;
@@ -36,12 +38,10 @@
   color: #ff5722;
 }
 
-/* Address and contact */
 .address, .contact-us {
   font-size: 14px;
 }
 
-/* Contact section */
 .contact-us a {
   color: #ff5722;
   text-decoration: none;
@@ -51,7 +51,6 @@
   text-decoration: underline;
 }
 
-/* Responsive styles */
 @media screen and (max-width: 768px) {
   .footer {
     flex-direction: column;

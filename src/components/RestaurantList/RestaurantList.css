@@ -1,18 +1,17 @@
-/* Styling for the restaurant list container */
 .restaurant-list-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
   text-align: center;
+   
 }
 
-/* Styling the search container */
 .search-container {
   position: relative;
   margin-bottom: 20px;
 }
 
-/* Styling the search input */
 .search-input {
   width: 100%;
   max-width: 400px;
@@ -25,7 +24,6 @@
   margin: 0 auto;
 }
 
-/* Styling for the top-rated button */
 .top-rated-button {
   padding: 10px 20px;
   background-color: #ff5722;
@@ -42,7 +40,6 @@
   background-color: #e64a19;
 }
 
-/* Styling the restaurant cards container */
 .restaurant-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -50,7 +47,6 @@
   padding: 20px;
 }
 
-/* Shimmer cards placeholder */
 .shimmer-restaurant-card {
   width: 100%;
   height: 200px;

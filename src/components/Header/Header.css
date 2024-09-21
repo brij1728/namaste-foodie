@@ -5,7 +5,10 @@
   padding: 20px 50px;
   background-color: #f5f5f5;
   position: relative;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap;
+  max-width: 1200px; 
+  margin: 0 auto;
+  width: 100%; 
 }
 
 .logo {
@@ -13,7 +16,6 @@
   height: 60px;
 }
 
-/* Navigation items for larger screens */
 .nav-items ul {
   display: flex;
   list-style: none;
@@ -21,7 +23,6 @@
   font-size: 24px;
 }
 
-/* Responsive styling for smaller screens */
 @media screen and (max-width: 768px) {
   .nav-items ul {
     flex-direction: column;
@@ -30,10 +31,9 @@
   }
 }
 
-/* Mobile responsiveness with hamburger menu for very small screens */
 @media screen and (max-width: 480px) {
   .nav-items ul {
-    display: none; /* Initially hidden for mobile */
+    display: none;
   }
 
   .nav-items.active ul {
