@@ -1,6 +1,9 @@
+import './RestaurantList.css';
+
 import React, { useEffect, useState } from 'react';
 
 import { RestaurantCard } from '../RestaurantCard';
+import { RestaurantSearch } from '../RestaurantSearch'; // Import the search component
 import { ShimmerRestaurantCard } from '../ShimmerRestaurantCard';
 
 const domainImageURL =
@@ -9,7 +12,8 @@ const domainImageURL =
 export const RestaurantList = () => {
   const [topRated, setTopRated] = useState(false);
   const [restaurantData, setRestaurantData] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [filteredData, setFilteredData] = useState([]); // To handle filtered data by search
+  const [loading, setLoading] = useState(true);
 
   // Function to handle top-rated toggle
   const handleTopRated = () => {
@@ -18,8 +22,8 @@ export const RestaurantList = () => {
 
   // Filtering top-rated restaurants based on toggle state
   const displayedRestaurants = topRated
-    ? restaurantData.filter((restaurant) => restaurant.rating >= 4.5)
-    : restaurantData;
+    ? filteredData.filter((restaurant) => restaurant.rating >= 4.5)
+    : filteredData;
 
   const fetchRestaurants = async () => {
     try {
@@ -41,6 +45,7 @@ export const RestaurantList = () => {
           })
         );
       setRestaurantData(restaurants);
+      setFilteredData(restaurants); // Initially, filtered data is the same as restaurantData
       setLoading(false); // Set loading to false when data is fetched
     } catch (error) {
       console.error(error);
@@ -48,25 +53,35 @@ export const RestaurantList = () => {
     }
   };
 
+  // Fetch restaurant data on mount
   useEffect(() => {
     fetchRestaurants();
-    return () => {
-      console.log('RestaurantList component unmounted');
-    };
   }, []);
 
+  // Update filtered data when search results are provided
+  const handleSearchResults = (results) => {
+    setFilteredData(results);
+  };
+
   // Number of shimmer cards to display while loading
-  const shimmerCards = new Array(16).fill(0);
+  const shimmerCards = new Array(8).fill(0);
 
   return (
-    <div>
-      <button onClick={handleTopRated}>
-        {topRated ? 'Show All Restaurants' : 'Top Rated Restaurants'}
+    <div className="restaurant-list-container">
+      <RestaurantSearch
+        restaurantData={restaurantData}
+        onSearchResults={handleSearchResults} // Pass the callback to search component
+      />
+
+      <button className="top-rated-button" onClick={handleTopRated}>
+        {topRated ? 'Show All Restaurants' : 'Show Top Rated Restaurants'}
       </button>
 
       <div className="restaurant-container">
-        {loading
-          ? shimmerCards.map((_, index) => <ShimmerRestaurantCard key={index} />) // Show shimmer cards while loading
+        {loading || filteredData.length === 0 // Check if loading or data is not loaded
+          ? shimmerCards.map((_, index) => (
+              <ShimmerRestaurantCard key={index} />
+            )) // Show shimmer cards while loading
           : displayedRestaurants.map((restaurant, index) => (
               <RestaurantCard
                 key={index}

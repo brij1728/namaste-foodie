@@ -1,21 +1,61 @@
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
   background-color: #f5f5f5;
-
+  position: relative;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-
-.logo{
+.logo {
   width: 60px;
   height: 60px;
 }
 
-.nav-items > ul{
+/* Navigation items for larger screens */
+.nav-items ul {
   display: flex;
   list-style: none;
   gap: 20px;
   font-size: 24px;
+}
+
+/* Responsive styling for smaller screens */
+@media screen and (max-width: 768px) {
+  .nav-items ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+/* Mobile responsiveness with hamburger menu for very small screens */
+@media screen and (max-width: 480px) {
+  .nav-items ul {
+    display: none; /* Initially hidden for mobile */
+  }
+
+  .nav-items.active ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    cursor: pointer;
+  }
+
+  .hamburger div {
+    width: 30px;
+    height: 3px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
 }

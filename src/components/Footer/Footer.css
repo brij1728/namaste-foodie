@@ -1,0 +1,65 @@
+/* Footer container */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Align items to the top */
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px; /* Prevent sections from becoming too narrow */
+}
+
+/* Social links styling */
+.social-links ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.social-links ul li {
+  margin-bottom: 10px;
+}
+
+.social-links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.social-links ul li a:hover {
+  color: #ff5722;
+}
+
+/* Address and contact */
+.address, .contact-us {
+  font-size: 14px;
+}
+
+/* Contact section */
+.contact-us a {
+  color: #ff5722;
+  text-decoration: none;
+}
+
+.contact-us a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .footer-section {
+    margin: 15px 0;
+  }
+}

@@ -1,4 +1,4 @@
-import {Footer, Header, RestaurantList, Search} from './components';
+import {Footer, Header, RestaurantList,} from './components';
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -7,7 +7,6 @@ const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Search />
       <RestaurantList   />
       <Footer />
     </div>
