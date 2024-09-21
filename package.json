@@ -8,7 +8,6 @@
     "lint": "eslint.",
     "format": "prettier --write.",
     "precommit": "lint-staged",
-    "prepare": "husky install",
     "test": "jest"
   },
   "repository": {
