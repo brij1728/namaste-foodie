@@ -1,4 +1,3 @@
-/* Container for the shimmer effect */
 @keyframes shimmer {
   0% {
     background-position: -500px 0;
@@ -8,7 +7,6 @@
   }
 }
 
-/* Shimmer base */
 .shimmer-wrapper {
   position: relative;
   overflow: hidden;
@@ -24,7 +22,6 @@
   animation: shimmer 1.5s infinite linear;
 }
 
-/* Shimmer card structure */
 .restaurant-card {
   width: 100%;
   max-width: 300px;
@@ -36,13 +33,13 @@
 }
 
 .restaurant-card:hover {
-  transform: translateY(-5px); /* Lift on hover */
+  transform: translateY(-5px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .image-container {
   width: 100%;
-  height: 160px; /* Same size as the regular card image */
+  height: 160px; 
   background-color: #f0f0f0;
   position: relative;
 }

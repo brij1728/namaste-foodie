@@ -68,20 +68,25 @@ export const RestaurantList = () => {
 
   return (
     <div className="restaurant-list-container">
-      <RestaurantSearch
-        restaurantData={restaurantData}
-        onSearchResults={handleSearchResults} // Pass the callback to search component
-      />
-
-      <button className="top-rated-button" onClick={handleTopRated}>
-        {topRated ? 'Show All Restaurants' : 'Show Top Rated Restaurants'}
-      </button>
+      <div className="restaurant-list-header">
+        <div className="top-rated-button-container">
+          <button className="top-rated-button" onClick={handleTopRated}>
+            {topRated ? 'Show All Restaurants' : 'Show Top Rated Restaurants'}
+          </button>
+        </div>
+        <div className='restaurant-search'>
+          <RestaurantSearch
+            restaurantData={restaurantData}
+            onSearchResults={handleSearchResults}
+          />
+        </div>
+      </div>
 
       <div className="restaurant-container">
-        {loading || filteredData.length === 0 // Check if loading or data is not loaded
+        {loading || filteredData.length === 0
           ? shimmerCards.map((_, index) => (
               <ShimmerRestaurantCard key={index} />
-            )) // Show shimmer cards while loading
+            ))
           : displayedRestaurants.map((restaurant, index) => (
               <RestaurantCard
                 key={index}
