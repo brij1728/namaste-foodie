@@ -6,11 +6,19 @@ import foodLogo from '../../../assets/food_logo.png';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  
+  let buttonName = isLoginOpen ? 'Logout' : 'Login';
+  
+  const toggleLogin = () => {
+    setIsLoginOpen(!isLoginOpen);
+  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  console.log('Header rendered');
   return (
     <header className="header">
       <div className="logo-container">
@@ -21,7 +29,7 @@ export const Header = () => {
           <li>Home</li>
           <li>About</li>
           <li>Contact</li>
-          <li>Login</li>
+          <button onClick={toggleLogin}>{buttonName}</button>
         </ul>
       </div>
       <div className="hamburger" onClick={toggleMenu}>

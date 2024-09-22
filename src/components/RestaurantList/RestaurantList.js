@@ -12,7 +12,7 @@ const domainImageURL =
 export const RestaurantList = () => {
   const [topRated, setTopRated] = useState(false);
   const [restaurantData, setRestaurantData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]); // To handle filtered data by search
+  const [filteredRestaurantData, setFilteredRestaurantData] = useState([]); // To handle filtered data by search
   const [loading, setLoading] = useState(true);
 
   // Function to handle top-rated toggle
@@ -22,8 +22,8 @@ export const RestaurantList = () => {
 
   // Filtering top-rated restaurants based on toggle state
   const displayedRestaurants = topRated
-    ? filteredData.filter((restaurant) => restaurant.rating >= 4.5)
-    : filteredData;
+    ? filteredRestaurantData.filter((restaurant) => restaurant.rating >= 4.5)
+    : filteredRestaurantData;
 
   const fetchRestaurants = async () => {
     try {
@@ -45,7 +45,7 @@ export const RestaurantList = () => {
           })
         );
       setRestaurantData(restaurants);
-      setFilteredData(restaurants); // Initially, filtered data is the same as restaurantData
+      setFilteredRestaurantData(restaurants); // Initially, filtered data is the same as restaurantData
       setLoading(false); // Set loading to false when data is fetched
     } catch (error) {
       console.error(error);
@@ -60,7 +60,7 @@ export const RestaurantList = () => {
 
   // Update filtered data when search results are provided
   const handleSearchResults = (results) => {
-    setFilteredData(results);
+    setFilteredRestaurantData(results);
   };
 
   // Number of shimmer cards to display while loading
@@ -83,7 +83,7 @@ export const RestaurantList = () => {
       </div>
 
       <div className="restaurant-container">
-        {loading || filteredData.length === 0
+        {loading || filteredRestaurantData.length === 0
           ? shimmerCards.map((_, index) => (
               <ShimmerRestaurantCard key={index} />
             ))
