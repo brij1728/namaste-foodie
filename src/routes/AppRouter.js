@@ -1,4 +1,4 @@
-import { AboutPage, Contact, Error, Home, LoginPage } from '../pages';
+import { AboutPage, Contact, Error, Home, LoginPage, RestaurantMenuPage } from '../pages';
 
 import { Layout } from '../components';
 import { createBrowserRouter } from 'react-router-dom';
@@ -27,6 +27,10 @@ export const browserRouter = createBrowserRouter([
         element: <LoginPage />,
         errorElement: <Error />,
       },
+      {
+        path: '/restaurants/:restaurantId',
+        element: <RestaurantMenuPage />,
+      }
     ],
     errorElement: <Error />,
   },
