@@ -1,6 +1,6 @@
 import './Header.css';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import foodLogo from '../../../assets/food_logo.png';
 
@@ -18,7 +18,13 @@ export const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  console.log('Header rendered');
+  useEffect(() => {
+    console.log('Header mounted');
+    return () => {
+      console.log('Header unmounted');
+    };
+  }, [buttonName]);
+
   return (
     <header className="header">
       <div className="logo-container">

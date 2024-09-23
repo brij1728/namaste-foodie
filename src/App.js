@@ -1,17 +1,7 @@
-import {Footer, Header, RestaurantList,} from './components';
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
-const AppLayout = () => {
-  return (
-    <div className="app">
-      <Header />
-      <RestaurantList   />
-      <Footer />
-    </div>
-  );
-};
+import { RouterProvider } from 'react-router-dom';
+import { browserRouter } from './routes/AppRouter';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={browserRouter} />);
