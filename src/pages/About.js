@@ -1,7 +1,7 @@
-import React from 'react';
 import { About } from '../components';
+import React from 'react';
 
-export const About = () => {
+export const AboutPage = () => {
   return (
     <div>
       <About />

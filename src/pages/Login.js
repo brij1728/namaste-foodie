@@ -1,7 +1,7 @@
-import React from 'react';
 import { Login } from '../components';
+import React from 'react';
 
-export const Login = () => {
+export const LoginPage = () => {
   return (
     <div>
       <Login />
