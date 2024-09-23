@@ -4,37 +4,35 @@
   padding: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; 
+  align-items: flex-start;
   flex-wrap: wrap;
-  text-align: left;
-  max-width: 1200px; 
-  margin: 0 auto; 
-  width: 100%; 
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .footer-section {
   flex: 1;
   margin: 10px;
-  min-width: 200px; 
+  min-width: 200px;
 }
 
-
-.social-links ul {
-  list-style-type: none;
+.footer-section ul {
+  list-style: none;
   padding: 0;
 }
 
-.social-links ul li {
+.footer-section ul li {
   margin-bottom: 10px;
 }
 
-.social-links ul li a {
+.footer-section ul li a {
   color: white;
   text-decoration: none;
   font-size: 16px;
 }
 
-.social-links ul li a:hover {
+.footer-section ul li a:hover {
   color: #ff5722;
 }
 
@@ -54,11 +52,12 @@
 @media screen and (max-width: 768px) {
   .footer {
     flex-direction: column;
-    text-align: center;
     align-items: center;
+    text-align: center;
   }
 
   .footer-section {
     margin: 15px 0;
+    text-align: center;
   }
 }

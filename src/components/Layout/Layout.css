@@ -1,0 +1,28 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1; /* Allow main content to grow and fill available space */
+}
+
+.content-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto; 
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .content-container {
+    padding: 10px;
+    justify-content: center;
+  }
+}
