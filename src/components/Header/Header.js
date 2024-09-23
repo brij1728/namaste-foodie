@@ -1,8 +1,8 @@
-// Header.js
 import './Header.css';
 
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
 import foodLogo from '../../../assets/food_logo.png';
 
 export const Header = () => {
@@ -29,18 +29,20 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="logo-container">
-        <img src={foodLogo} alt="logo" className="logo" />
+        <Link to="/">
+          <img src={foodLogo} alt="logo" className="logo" />
+        </Link>
       </div>
       <div className={`nav-items ${isMenuOpen ? 'active' : ''}`}>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
           <button onClick={toggleLogin}>{buttonName}</button>
         </ul>
