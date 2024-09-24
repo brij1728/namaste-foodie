@@ -21,10 +21,17 @@ export const RestaurantList = () => {
   // Fetch restaurant data on mount
   useEffect(() => {
     const fetchRestaurants = async () => {
-      const restaurants = await fetchRestaurantsAPI();
-      setRestaurantData(restaurants);
-      setFilteredRestaurantData(restaurants);
-      setLoading(false);
+      try {
+        const restaurants = await fetchRestaurantsAPI();
+        setRestaurantData(restaurants || []); // Ensure an empty array if the API response is null/undefined
+        setFilteredRestaurantData(restaurants || []); // Ensure an empty array if the API response is null/undefined
+      } catch (error) {
+        console.error('Failed to fetch restaurants:', error);
+        setRestaurantData([]); // Fallback to an empty array in case of error
+        setFilteredRestaurantData([]); // Fallback to an empty array in case of error
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchRestaurants();
@@ -32,16 +39,16 @@ export const RestaurantList = () => {
 
   // Handle search result updates
   const handleSearchResults = (results) => {
-    setFilteredRestaurantData(results);
+    setFilteredRestaurantData(results || []); // Ensure an empty array if the search results are null/undefined
   };
 
   const displayedRestaurants = topRated
-    ? filteredRestaurantData.filter((restaurant) => restaurant.rating >= 4.5)
+    ? filteredRestaurantData.filter((restaurant) => restaurant?.rating >= 4.5) // Optional chaining for safety
     : filteredRestaurantData;
 
   // Number of shimmer cards to display while loading
   const shimmerCards = new Array(12).fill(0);
-  
+
   return (
     <div className="restaurant-list-container">
       <div className="restaurant-list-header">
@@ -59,12 +66,14 @@ export const RestaurantList = () => {
       </div>
 
       <div className="restaurant-container">
-        {loading || filteredRestaurantData.length === 0
+        {loading ||
+        (Array.isArray(filteredRestaurantData) &&
+          filteredRestaurantData.length === 0) // Safeguard added with Array.isArray
           ? shimmerCards.map((_, index) => (
               <ShimmerRestaurantCard key={index} />
             ))
-          : displayedRestaurants.map((restaurant) => (
-              <RestaurantCard key={restaurant.id} {...restaurant} />
+          : displayedRestaurants?.map((restaurant) => (
+              <RestaurantCard key={restaurant?.id} {...restaurant} />
             ))}
       </div>
     </div>

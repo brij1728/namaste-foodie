@@ -1,11 +1,4 @@
-const domainImageURL =
-  'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/';
-
-const proxyURL = 'https://corsproxy.io/?';
-const swiggyAPIURL = 'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
-const proxyAPIURL =
-  '/api?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
-
+import { domainImageURL, swiggyAPIURL } from '../constants/apiURL';
 
 export const fetchRestaurantsAPI = async () => {
   try {
