@@ -51,9 +51,13 @@ export const RestaurantMenu = () => {
     avgRating = '',
   } = restaurantData;
 
-  const menuItems =
-    restaurantMenuInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
-      ?.cards[2]?.card?.card?.itemCards || [];
+ const menuItems =
+   restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
+     ?.cards?.[2]?.card?.card?.itemCards ||
+   restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
+     ?.cards?.[1]?.card?.card?.itemCards ||
+   [];
+ console.log('Menu Items:', menuItems);
 
   return (
     <div className="menu-container">
