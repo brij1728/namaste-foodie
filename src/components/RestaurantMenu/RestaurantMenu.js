@@ -1,18 +1,23 @@
-import './RestaurantMenu.css'; // Import the improved CSS file
+import './RestaurantMenu.css';
 
 import React, { useEffect, useState } from 'react';
 
 import { MENUAPIURL } from '../../constants/apiURL';
 import { ShimmerRestaurantCard } from '../ShimmerRestaurantCard';
 import { domainImageURL } from '../../constants/apiURL';
+import { useParams } from 'react-router-dom';
 
 export const RestaurantMenu = () => {
   const [restaurantMenuInfo, setRestaurantMenuInfo] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  
+  const { restaurantId } = useParams();
+ console.log('Restaurant ID:', restaurantId);
+ 
   const fetchMenu = async () => {
     try {
-      const response = await fetch(MENUAPIURL);
+      const response = await fetch(`${MENUAPIURL}${restaurantId}`);
+
       const responseMenu = await response.json();
       console.log(responseMenu);
       setRestaurantMenuInfo(responseMenu);
@@ -32,6 +37,7 @@ export const RestaurantMenu = () => {
   }
 
   const restaurantData = restaurantMenuInfo?.data?.cards[2]?.card?.card?.info;
+  console.log('Restaurant Data:', restaurantData);
   if (!restaurantData) {
     return <p>No data available</p>;
   }
@@ -45,7 +51,8 @@ export const RestaurantMenu = () => {
 
   const menuItems =
     restaurantMenuInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
-      ?.cards[1]?.card?.card?.itemCards || [];
+      ?.cards[2]?.card?.card?.itemCards || [];
+  console.log('Menu Items:', menuItems);
 
   return (
     <div className="menu-container">
@@ -63,11 +70,15 @@ export const RestaurantMenu = () => {
             <li key={item.card.info.id} className="menu-item">
               <div className="menu-item-content">
                 <h3>{item.card.info.name}</h3>
-                <p className="price">₹{item.card.info.price / 100}</p>
+                <p className="price">
+                  ₹
+                  {(item.card.info.defaultPrice ||
+                    item.card.info.price )/ 100}
+                </p>
                 <p>{item.card.info.description}</p>
                 <p className="customisable-label">Customisable</p>
               </div>
-              <div className='menu-button'>
+              <div className="menu-button">
                 <img
                   src={`${domainImageURL}/${item.card.info.imageId}`}
                   alt={item.card.info.name}

@@ -2,6 +2,7 @@ import './RestaurantList.css';
 
 import React, { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
 import { RestaurantCard } from '../RestaurantCard';
 import { RestaurantSearch } from '../RestaurantSearch';
 import { ShimmerRestaurantCard } from '../ShimmerRestaurantCard';
@@ -73,7 +74,9 @@ export const RestaurantList = () => {
               <ShimmerRestaurantCard key={index} />
             ))
           : displayedRestaurants?.map((restaurant) => (
-              <RestaurantCard key={restaurant?.id} {...restaurant} />
+              <Link key={restaurant?.id} to={`/restaurants/${restaurant.id}`}>
+                <RestaurantCard {...restaurant} />
+              </Link>
             ))}
       </div>
     </div>

@@ -20,9 +20,8 @@ export const Header = () => {
   };
 
   useEffect(() => {
-    console.log('Header mounted');
     return () => {
-      console.log('Header unmounted');
+      setIsMenuOpen(false);
     };
   }, [buttonName]);
 

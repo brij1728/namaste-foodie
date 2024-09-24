@@ -8,4 +8,4 @@ export const proxyAPIURL ='/api?lat=12.9715987&lng=77.5945627&is-seo-homepage-en
 
 export const proxyURL = 'https://corsproxy.io/?';
 
-export const MENUAPIURL = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=53503&catalog_qa=undefined&query=Pizza&submitAction=ENTER`;
+export const MENUAPIURL = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=`;
