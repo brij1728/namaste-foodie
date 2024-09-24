@@ -75,7 +75,6 @@ export const RestaurantMenu = () => {
                   ₹{(item.card.info.defaultPrice || item.card.info.price) / 100}
                 </p>
                 <p>{item.card.info.description}</p>
-                <p className="customisable-label">Customisable</p>
               </div>
               <div className="menu-button">
                 <img
@@ -84,6 +83,7 @@ export const RestaurantMenu = () => {
                   className="menu-item-image"
                 />
                 <button className="add-button">ADD</button>
+                <p className="customisable-label">Customisable</p>
               </div>
             </li>
           ))
