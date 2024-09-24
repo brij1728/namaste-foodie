@@ -1,7 +1,10 @@
+import './RestaurantMenu.css'; // Import the improved CSS file
+
 import React, { useEffect, useState } from 'react';
 
 import { MENUAPIURL } from '../../constants/apiURL';
 import { ShimmerRestaurantCard } from '../ShimmerRestaurantCard';
+import { domainImageURL } from '../../constants/apiURL';
 
 export const RestaurantMenu = () => {
   const [restaurantMenuInfo, setRestaurantMenuInfo] = useState(null);
@@ -16,7 +19,7 @@ export const RestaurantMenu = () => {
       setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false); 
+      setLoading(false);
     }
   };
 
@@ -24,18 +27,15 @@ export const RestaurantMenu = () => {
     fetchMenu();
   }, []);
 
-  
   if (loading) {
     return <ShimmerRestaurantCard />;
   }
 
-  // Check if restaurantMenuInfo has the expected structure
   const restaurantData = restaurantMenuInfo?.data?.cards[2]?.card?.card?.info;
   if (!restaurantData) {
-    return <p>No data available</p>; // Handle case when data is not available
+    return <p>No data available</p>;
   }
 
-  // Destructure data safely with a fallback
   const {
     name = 'Restaurant',
     cuisines = [],
@@ -46,20 +46,35 @@ export const RestaurantMenu = () => {
   const menuItems =
     restaurantMenuInfo?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
       ?.cards[1]?.card?.card?.itemCards || [];
-  console.log(menuItems);
 
   return (
-    <div>
-      <h1>{name}</h1>
-      <h2>Cuisines: {cuisines.join(', ')}</h2>
-      <p>Cost for two: {costForTwoMessage}</p>
-      <p>Rating: {avgRating}</p>
+    <div className="menu-container">
+      <div className="menu-header">
+        <h1>{name}</h1>
+        <h2>Cuisines: {cuisines.join(', ')}</h2>
+        <p>Cost for two: {costForTwoMessage}</p>
+        <p>Rating: {avgRating}</p>
+      </div>
+
       <h2>Menu</h2>
       <ul>
         {menuItems.length > 0 ? (
           menuItems.map((item) => (
-            <li key={item.card.info.id}>
-              {item.card.info.name} - ₹{item.card.info.price / 100}
+            <li key={item.card.info.id} className="menu-item">
+              <div className="menu-item-content">
+                <h3>{item.card.info.name}</h3>
+                <p className="price">₹{item.card.info.price / 100}</p>
+                <p>{item.card.info.description}</p>
+                <p className="customisable-label">Customisable</p>
+              </div>
+              <div className='menu-button'>
+                <img
+                  src={`${domainImageURL}/${item.card.info.imageId}`}
+                  alt={item.card.info.name}
+                  className="menu-item-image"
+                />
+                <button className="add-button">ADD</button>
+              </div>
             </li>
           ))
         ) : (
