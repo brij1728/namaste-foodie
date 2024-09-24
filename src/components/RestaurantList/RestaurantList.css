@@ -77,6 +77,10 @@
   gap: 20px;
 }
 
+.restaurant-container a {
+  text-decoration: none;
+}
+
 @media screen and (max-width: 768px) {
   .restaurant-container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
