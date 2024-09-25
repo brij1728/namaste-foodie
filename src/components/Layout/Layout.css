@@ -1,28 +1,62 @@
+/* Ensure that the body and html take the full height */
 body, html {
   height: 100%;
   margin: 0;
+  font-family: Arial, sans-serif; /* Set a default font-family */
 }
 
+/* Layout structure: Flexbox for columnar layout */
 .layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh; /* Ensure the layout takes the full viewport height */
 }
 
+/* Main content should grow and fill the available space */
 main {
-  flex: 1; /* Allow main content to grow and fill available space */
+  flex: 1;
 }
 
+/* Container for page content */
 .content-container {
   padding: 20px;
   max-width: 1200px;
-  margin: 0 auto; 
+  margin: 0 auto;
   width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in width calculation */
 }
 
+/* Offline banner styling */
+.offline-banner {
+  background-color: #ffcc00; /* Bright yellow for visibility */
+  color: #333; /* Dark text for readability */
+  text-align: center;
+  padding: 10px;
+  font-size: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Make sure it's above other elements */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow to separate it visually */
+}
+
+/* Responsive adjustments for smaller screens */
 @media screen and (max-width: 768px) {
   .content-container {
-    padding: 10px;
+    padding: 10px; /* Reduce padding on smaller screens */
     justify-content: center;
   }
+
+  .offline-banner {
+    font-size: 0.9rem; /* Make the text slightly smaller on mobile */
+    padding: 8px; /* Reduce padding for mobile devices */
+  }
+}
+
+/* Footer should always be at the bottom */
+footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
 }
