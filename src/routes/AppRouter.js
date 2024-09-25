@@ -1,8 +1,10 @@
 import { AboutPage, Contact, Error, Home, LoginPage, RestaurantMenuPage } from '../pages';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 
 import { Layout } from '../components';
-import { createBrowserRouter } from 'react-router-dom';
 
+const Grocery = lazy(() => import('../pages/GroceryPage'));
 export const browserRouter = createBrowserRouter([
   {
     path: '/',
@@ -30,8 +32,20 @@ export const browserRouter = createBrowserRouter([
       {
         path: '/restaurants/:restaurantId',
         element: <RestaurantMenuPage />,
-      }
+      },
+      {
+        path: '/grocery',
+        element: (
+          <Suspense fallback={<div>Loading Grocery Page...</div>}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
     ],
     errorElement: <Error />,
+  },
+  {
+    path: '*', 
+    element: <Navigate to="/" replace />,
   },
 ]);
