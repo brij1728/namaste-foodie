@@ -1,10 +1,12 @@
-import { AboutPage, Contact, Error, Home, LoginPage, RestaurantMenuPage } from '../pages';
+import { Contact, Error, Home, LoginPage, RestaurantMenuPage } from '../pages';
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
 import { Layout } from '../components';
 
 const Grocery = lazy(() => import('../pages/GroceryPage'));
+const About = lazy(() => import('../pages/AboutPage'));
+
 export const browserRouter = createBrowserRouter([
   {
     path: '/',
@@ -16,7 +18,11 @@ export const browserRouter = createBrowserRouter([
       },
       {
         path: '/about',
-        element: <AboutPage />,
+        element: (
+          <Suspense fallback={<div>Loading About Page...</div>}>
+            <About />
+          </Suspense>
+        ),
         errorElement: <Error />,
       },
       {
