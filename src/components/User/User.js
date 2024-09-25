@@ -1,6 +1,6 @@
 import './User.css';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export const User = (props) => {
   const [count, setCount] = useState(0);
@@ -9,6 +9,14 @@ export const User = (props) => {
   handleClick = () => {
     setCount(count + 1);
   };
+
+  useEffect(() => {
+    console.log('User useEffect');
+
+    return () => {
+      console.log('User return');
+    };
+  }, []);
 
   return (
     <div className="user-card">
