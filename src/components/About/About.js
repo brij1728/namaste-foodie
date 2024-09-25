@@ -1,10 +1,11 @@
-import React from 'react'
-
+import React from 'react';
+import { User } from '../User';
+import { UserClass } from '../UserClass/UserClass';
 export const About = () => {
   return (
-	<div>
-		<h1>About</h1>
-		<p>This is the Food App</p>
-	</div>
-  )
+    <div>
+      <User name="Brijesh Kumar Singh" />
+      <UserClass name="Brijesh Kumar Singh" location="Varanasi"/>
+    </div>
+  );
 }

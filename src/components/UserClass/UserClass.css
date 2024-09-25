@@ -1,0 +1,72 @@
+.user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* Slightly brighter background */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.user-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+.user-card h1 {
+  font-size: 26px; /* Slightly larger font for the name */
+  color: #333;
+  margin-bottom: 10px;
+  font-family: 'Arial', sans-serif; /* Clean font for headings */
+}
+
+.user-card h3,
+.user-card h4 {
+  font-size: 18px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px; /* Space below the counter */
+}
+
+.counter button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Rounded buttons */
+  cursor: pointer;
+  font-size: 20px; /* Larger font for buttons */
+  width: 50px;
+  height: 50px;
+  margin: 0 15px; /* Space between buttons */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.counter button:hover {
+  background-color: #45a049;
+  transform: translateY(-3px);
+}
+
+.counter button:active {
+  transform: translateY(0);
+}
+
+.counter p {
+  font-size: 24px; /* Larger number display */
+  margin: 0 15px;
+  font-weight: bold;
+  color: #333; /* Darker text for the count */
+}

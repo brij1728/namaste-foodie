@@ -55,6 +55,8 @@ export const RestaurantMenu = () => {
     restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
       ?.cards?.[1]?.card?.card?.itemCards ||
     restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
+      ?.cards?.[4]?.card?.card?.itemCards ||
+    restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
       ?.cards?.[2]?.card?.card?.itemCards ||
     restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
       ?.cards?.[5]?.card?.card?.itemCards ||
