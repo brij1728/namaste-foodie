@@ -26,7 +26,7 @@ export const Header = () => {
   }, [buttonName]);
 
   return (
-    <header className="header">
+    <header className="header w-full flex justify-between items-center">
       <div className="logo-container">
         <Link to="/">
           <img src={foodLogo} alt="logo" className="logo" />
