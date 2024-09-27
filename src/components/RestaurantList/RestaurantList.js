@@ -1,9 +1,9 @@
 import './RestaurantList.css';
 
+import { DiscountedRestaurantCard, RestaurantCard } from '../RestaurantCard';
 import React, { useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import { RestaurantCard } from '../RestaurantCard';
 import { RestaurantSearch } from '../RestaurantSearch';
 import { ShimmerRestaurantCard } from '../ShimmerRestaurantCard';
 import { fetchRestaurantsAPI } from '../../api/fetchRestaurantsAPI';
@@ -14,22 +14,22 @@ export const RestaurantList = () => {
   const [filteredRestaurantData, setFilteredRestaurantData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Toggle for top-rated restaurants
+  const RestaurantWithDiscount = DiscountedRestaurantCard(RestaurantCard);
+
   const handleTopRated = () => {
     setTopRated(!topRated);
   };
 
-  // Fetch restaurant data on mount
   useEffect(() => {
     const fetchRestaurants = async () => {
       try {
         const restaurants = await fetchRestaurantsAPI();
-        setRestaurantData(restaurants || []); // Ensure an empty array if the API response is null/undefined
-        setFilteredRestaurantData(restaurants || []); // Ensure an empty array if the API response is null/undefined
+        setRestaurantData(restaurants || []);
+        setFilteredRestaurantData(restaurants || []);
       } catch (error) {
         console.error('Failed to fetch restaurants:', error);
-        setRestaurantData([]); // Fallback to an empty array in case of error
-        setFilteredRestaurantData([]); // Fallback to an empty array in case of error
+        setRestaurantData([]);
+        setFilteredRestaurantData([]);
       } finally {
         setLoading(false);
       }
@@ -38,16 +38,14 @@ export const RestaurantList = () => {
     fetchRestaurants();
   }, []);
 
-  // Handle search result updates
   const handleSearchResults = (results) => {
-    setFilteredRestaurantData(results || []); // Ensure an empty array if the search results are null/undefined
+    setFilteredRestaurantData(results || []);
   };
 
   const displayedRestaurants = topRated
-    ? filteredRestaurantData.filter((restaurant) => restaurant?.rating >= 4.5) // Optional chaining for safety
+    ? filteredRestaurantData.filter((restaurant) => restaurant?.rating >= 4.5)
     : filteredRestaurantData;
 
-  // Number of shimmer cards to display while loading
   const shimmerCards = new Array(12).fill(0);
 
   return (
@@ -69,13 +67,17 @@ export const RestaurantList = () => {
       <div className="restaurant-container">
         {loading ||
         (Array.isArray(filteredRestaurantData) &&
-          filteredRestaurantData.length === 0) // Safeguard added with Array.isArray
+          filteredRestaurantData.length === 0)
           ? shimmerCards.map((_, index) => (
               <ShimmerRestaurantCard key={index} />
             ))
           : displayedRestaurants?.map((restaurant) => (
               <Link key={restaurant?.id} to={`/restaurants/${restaurant.id}`}>
-                <RestaurantCard {...restaurant} />
+                {restaurant.discount ? (
+                  <RestaurantWithDiscount {...restaurant} />
+                ) : (
+                  <RestaurantCard {...restaurant} />
+                )}
               </Link>
             ))}
       </div>

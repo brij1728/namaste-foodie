@@ -1,29 +1,27 @@
 .restaurant-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
   gap: 20px;
   justify-content: center;
   width: 100%;
-  max-width: 1200px; 
-  margin: 0 auto; 
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .restaurant-card {
-  width: 100%;
-  max-width: 300px;
+  background-color: white;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  background-color: #fff;
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .restaurant-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
-.image-container {
+.relative {
   position: relative;
   width: 100%;
   height: 160px;
@@ -33,22 +31,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  text-align: center;
-  padding: 5px 0;
-  font-size: 14px;
-}
-
-.price-text {
-  font-size: 16px;
-  font-weight: bold;
+  border-radius: 8px 8px 0 0; /* Rounded top corners */
 }
 
 .card-content {
@@ -66,14 +49,9 @@
 .card-rating {
   font-size: 14px;
   display: flex;
-  align-items: center; 
+  align-items: center;
   color: #666;
   margin-bottom: 5px;
-}
-
-.rating-star {
-  color: #1dbf73; 
-  margin-right: 5px; 
 }
 
 .card-cuisine {
@@ -90,42 +68,11 @@
   color: #999;
 }
 
-@media screen and (max-width: 768px) {
-  .restaurant-container {
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  }
-
-  .restaurant-card {
-    max-width: 100%; 
-  }
-
-  .restaurant-img {
-    height: 140px;
-  }
-
-  .card-title {
-    font-size: 15px;
-  }
-
-  .price-text {
-    font-size: 14px;
-  }
+/* Discount Overlay */
+.absolute {
+  position: absolute;
 }
 
-@media screen and (max-width: 480px) {
-  .restaurant-container {
-    grid-template-columns: 1fr; 
-  }
-
-  .restaurant-img {
-    height: 120px;
-  }
-
-  .card-title {
-    font-size: 14px;
-  }
-
-  .price-text {
-    font-size: 13px;
-  }
+.bg-opacity-60 {
+  background-color: rgba(0, 0, 0, 0.6);
 }

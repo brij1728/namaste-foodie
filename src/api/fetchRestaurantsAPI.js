@@ -13,20 +13,26 @@ export const fetchRestaurantsAPI = async () => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const responseData = JSON.parse(rawResponse); // Manually parsing to catch errors
-
-    const restaurants = responseData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
-      (restaurant) => ({
-        id: restaurant.info.id,
-        resName: restaurant.info.name,
-        address: `${restaurant.info.locality}, ${restaurant.info.areaName}`,
-        cuisine: restaurant.info.cuisines.join(', '),
-        rating: restaurant.info.avgRating,
-        time: restaurant.info.sla.slaString,
-        price: `${restaurant.info.costForTwo}`,
-        image: `${domainImageURL}${restaurant.info.cloudinaryImageId}`,
-      })
-    );
+    const responseData = JSON.parse(rawResponse); 
+    console.log('Response data:', responseData);
+    const restaurants =
+      responseData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
+        (restaurant) => ({
+          id: restaurant.info.id,
+          resName: restaurant.info.name,
+          address: `${restaurant.info.locality}, ${restaurant.info.areaName}`,
+          cuisine: restaurant.info.cuisines.join(', '),
+          rating: restaurant.info.avgRating,
+          time: restaurant.info.sla.slaString,
+          price: `${restaurant.info.costForTwo}`,
+          image: `${domainImageURL}${restaurant.info.cloudinaryImageId}`,
+          discount: restaurant.info.aggregatedDiscountInfoV3
+            ? `${restaurant.info.aggregatedDiscountInfoV3.header || ''} ${
+                restaurant.info.aggregatedDiscountInfoV3.subHeader || ''
+              }`.trim()
+            : null,
+        })
+      );
 
     return restaurants;
   } catch (error) {
