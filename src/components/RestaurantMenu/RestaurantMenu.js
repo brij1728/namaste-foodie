@@ -2,6 +2,7 @@ import './RestaurantMenu.css';
 
 import { MenuItemCard } from '../MenuItemCard';
 import React from 'react';
+import { RestaurantCategory } from '../RestaurantCategory';
 import { ShimmerRestaurantCard } from '../ShimmerRestaurantCard';
 import { useParams } from 'react-router-dom';
 import { useRestaurantMenu } from '../../utils';
@@ -27,16 +28,15 @@ export const RestaurantMenu = () => {
     avgRating = '',
   } = restaurantData;
 
-  const menuItems =
-    restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
-      ?.cards?.[1]?.card?.card?.itemCards ||
-    restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
-      ?.cards?.[4]?.card?.card?.itemCards ||
-    restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
-      ?.cards?.[2]?.card?.card?.itemCards ||
-    restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR
-      ?.cards?.[5]?.card?.card?.itemCards ||
-    [];
+
+  const category =
+    restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+      (card) =>
+        card.card?.['card']?.['@type'] ===
+        'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
+    ) || [];
+
+  console.log('category', category);
 
   return (
     <div className="menu-container">
@@ -47,12 +47,21 @@ export const RestaurantMenu = () => {
         <p>Rating: {avgRating}</p>
       </div>
 
-      <h2>Menu</h2>
-      <ul>
-        {menuItems.length > 0 ? (
-          menuItems.map((item) => (
-            <MenuItemCard key={item.card.info.id} item={item} />
-          ))
+      <ul className="" style={{ backgroundColor: 'gba(2, 6, 12, .0509803922)'}}>
+
+        {category.length > 0 ? (
+          category.map((item) => {
+            const category = item.card.card.title;
+            const items = item.card.card.itemCards;
+
+            return (
+              <RestaurantCategory
+                key={item.card.card.title}
+                title={category}
+                item={items}
+              />
+            );
+          })
         ) : (
           <li>No menu items available</li>
         )}
