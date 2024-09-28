@@ -1,20 +1,17 @@
 import { FaAngleDown, FaAngleUp } from 'react-icons/fa6';
-import React, { useState } from 'react';
 
 import { MenuItemCard } from '../MenuItemCard';
+import React from 'react';
 
-export const RestaurantCategory = ({ title, item }) => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const toggleAccordion = () => {
-    setIsOpen(!isOpen);
-  };
-
+export const RestaurantCategory = ({ title, item, isOpen, onToggle }) => {
+	const handleToggle = () => {
+		onToggle();
+	}
   return (
     <div className="mb-4 bg-white shadow-xl w-full p-4">
       <h1
         className="text-xl font-bold cursor-pointer py-2 flex justify-between items-center"
-        onClick={toggleAccordion}
+        onClick={handleToggle}
       >
         <span>
           {title} ({item?.length || 0})
@@ -26,7 +23,6 @@ export const RestaurantCategory = ({ title, item }) => {
           {item?.map((menuItem, index) => (
             <div key={menuItem.card.info.id}>
               <MenuItemCard item={menuItem} />
-              {/* Add line if it's not the last item */}
               {index < item.length - 1 && (
                 <hr className="border-t border-gray-200 my-4" />
               )}

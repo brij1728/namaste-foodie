@@ -1,7 +1,7 @@
 import './RestaurantMenu.css';
 
-import { MenuItemCard } from '../MenuItemCard';
-import React from 'react';
+import React, { useState } from 'react';
+
 import { RestaurantCategory } from '../RestaurantCategory';
 import { ShimmerRestaurantCard } from '../ShimmerRestaurantCard';
 import { useParams } from 'react-router-dom';
@@ -10,6 +10,15 @@ import { useRestaurantMenu } from '../../utils';
 export const RestaurantMenu = () => {
   const { restaurantId } = useParams();
   const { restaurantMenuInfo, loading } = useRestaurantMenu(restaurantId);
+  const [openCategoryIndex, setOpenCategoryIndex] = useState(0); // First accordion open by default
+
+  // Function to toggle between opening and closing categories
+  const handleToggle = (index) => {
+    // If the clicked category is already open, close it (set to null)
+    // Otherwise, open the clicked category
+    console.log(`openCategoryIndex: ${openCategoryIndex}, index: ${index}`);
+    setOpenCategoryIndex(openCategoryIndex === index ? null : index);
+  };
 
   if (loading) {
     return <ShimmerRestaurantCard />;
@@ -28,15 +37,12 @@ export const RestaurantMenu = () => {
     avgRating = '',
   } = restaurantData;
 
-
-  const category =
+  const categories =
     restaurantMenuInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (card) =>
         card.card?.['card']?.['@type'] ===
         'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
     ) || [];
-
-  console.log('category', category);
 
   return (
     <div className="menu-container">
@@ -47,18 +53,19 @@ export const RestaurantMenu = () => {
         <p>Rating: {avgRating}</p>
       </div>
 
-      <ul className="" style={{ backgroundColor: 'gba(2, 6, 12, .0509803922)'}}>
-
-        {category.length > 0 ? (
-          category.map((item) => {
-            const category = item.card.card.title;
+      <ul>
+        {categories.length > 0 ? (
+          categories.map((item, index) => {
+            const categoryTitle = item.card.card.title;
             const items = item.card.card.itemCards;
 
             return (
               <RestaurantCategory
-                key={item.card.card.title}
-                title={category}
+                key={categoryTitle}
+                title={categoryTitle}
                 item={items}
+                isOpen={index === openCategoryIndex} // Check if the current category is open
+                onToggle={() => handleToggle(index)} // Call handleToggle on click
               />
             );
           })
