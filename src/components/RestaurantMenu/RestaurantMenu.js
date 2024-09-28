@@ -10,13 +10,11 @@ import { useRestaurantMenu } from '../../utils';
 export const RestaurantMenu = () => {
   const { restaurantId } = useParams();
   const { restaurantMenuInfo, loading } = useRestaurantMenu(restaurantId);
-  const [openCategoryIndex, setOpenCategoryIndex] = useState(0); // First accordion open by default
+  const [openCategoryIndex, setOpenCategoryIndex] = useState(0); 
 
-  // Function to toggle between opening and closing categories
   const handleToggle = (index) => {
     // If the clicked category is already open, close it (set to null)
     // Otherwise, open the clicked category
-    console.log(`openCategoryIndex: ${openCategoryIndex}, index: ${index}`);
     setOpenCategoryIndex(openCategoryIndex === index ? null : index);
   };
 
@@ -64,8 +62,8 @@ export const RestaurantMenu = () => {
                 key={categoryTitle}
                 title={categoryTitle}
                 item={items}
-                isOpen={index === openCategoryIndex} // Check if the current category is open
-                onToggle={() => handleToggle(index)} // Call handleToggle on click
+                isOpen={index === openCategoryIndex} 
+                onToggle={() => handleToggle(index)} 
               />
             );
           })
