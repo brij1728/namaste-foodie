@@ -14,7 +14,7 @@ export const fetchRestaurantsAPI = async () => {
     }
 
     const responseData = JSON.parse(rawResponse); 
-    console.log('Response data:', responseData);
+   
     const restaurants =
       responseData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
         (restaurant) => ({
