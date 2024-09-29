@@ -1,29 +1,25 @@
-import './Header.css';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 
-import React, { useEffect, useState } from 'react';
-
-import { Link } from 'react-router-dom';
 import foodLogo from '../../../assets/food_logo.png';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const navigate = useNavigate(); // Ensure this hook is called here
 
   const buttonName = isLoginOpen ? 'Logout' : 'Login';
 
   const toggleLogin = () => {
     setIsLoginOpen(!isLoginOpen);
+    if (!isLoginOpen) {
+      navigate('/login'); // Correct usage of navigate
+    }
   };
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  useEffect(() => {
-    return () => {
-      setIsMenuOpen(false);
-    };
-  }, [buttonName]);
 
   return (
     <header className="header w-full flex justify-between items-center">

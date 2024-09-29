@@ -19,3 +19,12 @@
 - Hosting App on https
 - Tree Shaking - remove unused code
 - Different dev and prod bundles
+
+
+# Redux Toolkit
+ - Install `@reduxjs/toolkit` and `react-redux`
+ - Build our own store
+ - Connect our store to our app
+ - Create Slice (cartSlice)
+ - dispatch (action)
+ - Read data using selector
