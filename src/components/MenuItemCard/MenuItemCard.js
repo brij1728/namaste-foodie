@@ -1,7 +1,10 @@
 import React from 'react';
+import { addToCart } from '../../redux/slices/cartSlice';
 import { domainImageURL } from '../../constants/apiURL';
-
+import { useDispatch } from 'react-redux';
 export const MenuItemCard = ({ item }) => {
+  
+  const dispatch = useDispatch();
   const {
     name,
     defaultPrice,
@@ -17,6 +20,11 @@ export const MenuItemCard = ({ item }) => {
   const firstOfferTag = offerTags && offerTags.length > 0 ? offerTags[0] : null;
   const vegClassifier = itemAttribute?.vegClassifier;
   const rating = ratings?.aggregatedRating;
+ 
+  const handleAddItems = (item) => {
+    console.log('Add item to cart');
+    dispatch(addToCart(item));
+  }
 
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 rounded-lg mb-4">
@@ -79,7 +87,8 @@ export const MenuItemCard = ({ item }) => {
             alt={name}
             className="w-[156px] h-[144px] object-cover rounded-xl cursor-pointer"
           />
-          <button className="absolute bottom-0 right-4 w-[120px] bg-white text-[18px] font-[800] px-4 py-2 rounded-md cursor-pointer text-center uppercase shadow-xl hover:bg-gray-100 hover:text-[rgba(2, 6, 12, 0.75)] transition-colors duration-200">
+          <button className="absolute bottom-0 right-4 w-[120px] bg-white text-[18px] font-[800] px-4 py-2 rounded-md cursor-pointer text-center uppercase shadow-xl hover:bg-gray-100 hover:text-[rgba(2, 6, 12, 0.75)] transition-colors duration-200"
+          onClick={() => handleAddItems(item)}>
             ADD
           </button>
           <p

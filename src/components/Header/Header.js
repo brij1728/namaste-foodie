@@ -2,11 +2,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 
 import foodLogo from '../../../assets/food_logo.png';
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const navigate = useNavigate(); // Ensure this hook is called here
+  const navigate = useNavigate(); 
+  
+  // Subscribing to the cart items from the store
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   const buttonName = isLoginOpen ? 'Logout' : 'Login';
 
@@ -41,6 +46,9 @@ export const Header = () => {
           </li>
           <li>
             <Link to="/grocery">Grocery</Link>
+          </li>
+          <li className='font-bold'>
+            <Link to="/cart">Cart ({cartItems.length})</Link>
           </li>
           <button onClick={toggleLogin}>{buttonName}</button>
         </ul>

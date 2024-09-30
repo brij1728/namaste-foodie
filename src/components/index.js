@@ -6,3 +6,4 @@ export * from './About';
 export * from './Layout';
 export * from './RestaurantMenu';
 export * from './Grocery';
+export * from './Cart';

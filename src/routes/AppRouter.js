@@ -1,8 +1,7 @@
+import { Cart, Layout } from '../components';
 import { Contact, Error, Home, LoginPage, RestaurantMenuPage } from '../pages';
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-
-import { Layout } from '../components';
 
 const Grocery = lazy(() => import('../pages/GroceryPage'));
 const About = lazy(() => import('../pages/AboutPage'));
@@ -47,6 +46,11 @@ export const browserRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path: '/cart',
+        element: <Cart/>,
+        errorElement: <Error />,
+      }
     ],
     errorElement: <Error />,
   },
