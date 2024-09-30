@@ -18,7 +18,8 @@ const cartSlice = createSlice({
     },
     clearToCart: (state) => {
       // Logic to clear the cart
-      state.items.length = 0; // [] will not work here as it will create a new array reference and will not update the state
+      state.items.length = 0; // [] will not work here as it will create a new array reference and will not update the state, as you are not mutating the state directly or do with returning a empty array
+      // return { ...state, items: [] }; // This will also work but not recommended as it will create a new object reference
 	  
     },
   },
