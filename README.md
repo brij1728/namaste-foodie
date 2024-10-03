@@ -28,3 +28,11 @@
  - Create Slice (cartSlice)
  - dispatch (action)
  - Read data using selector
+
+
+ # Setting up Testing in our app
+ - Install React Testung Library
+ - Installed Jest
+ - Installed Babel dependencies
+ - Configure Babel
+ - Configure Parcel config file to disable default babel transpilation 

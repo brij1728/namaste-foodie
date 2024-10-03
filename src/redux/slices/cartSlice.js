@@ -8,19 +8,38 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-      // Logic to add item to cart
-      // mutating the state directly because we are using immer library internally which will take care of immutability for us automatically and will update the state immutably in the background 
-      state.items.push(action.payload);
+      // Check if the item already exists in the cart
+      const existingItem = state.items.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (existingItem) {
+        // If item exists, increment its quantity
+        existingItem.quantity += 1;
+      } else {
+        // If item doesn't exist, add it to the cart with quantity 1
+        state.items.push({ ...action.payload, quantity: 1 });
+      }
     },
     removeFromCart: (state, action) => {
-      // Logic to remove item from cart
-      state.items = state.items.filter((item) => item.id !== action.payload.id);
+      // Find the item in the cart
+      const existingItem = state.items.find(
+        (item) => item.id === action.payload.id
+      );
+
+      if (existingItem && existingItem.quantity > 1) {
+        // If the item exists and its quantity is greater than 1, decrement its quantity
+        existingItem.quantity -= 1;
+      } else {
+        // Otherwise, remove the item from the cart
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
+        );
+      }
     },
     clearToCart: (state) => {
-      // Logic to clear the cart
-      state.items.length = 0; // [] will not work here as it will create a new array reference and will not update the state, as you are not mutating the state directly or do with returning a empty array
-      // return { ...state, items: [] }; // This will also work but not recommended as it will create a new object reference
-	  
+      // Clear the cart by setting the items array to an empty array
+      state.items.length = 0;
     },
   },
 });

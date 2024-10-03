@@ -1,10 +1,17 @@
+import { addToCart, removeFromCart } from '../../redux/slices/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 import React from 'react';
-import { addToCart } from '../../redux/slices/cartSlice';
 import { domainImageURL } from '../../constants/apiURL';
-import { useDispatch } from 'react-redux';
+
 export const MenuItemCard = ({ item }) => {
-  
   const dispatch = useDispatch();
+
+  // Selector to get the current quantity from the cart
+  const cartItems = useSelector((state) => state.cart.items);
+  console.log('cartItems', cartItems);
+  const quantity = cartItems.length || 0; // Get quantity from Redux store
+
   const {
     name,
     defaultPrice,
@@ -20,11 +27,16 @@ export const MenuItemCard = ({ item }) => {
   const firstOfferTag = offerTags && offerTags.length > 0 ? offerTags[0] : null;
   const vegClassifier = itemAttribute?.vegClassifier;
   const rating = ratings?.aggregatedRating;
- 
-  const handleAddItems = (item) => {
-    console.log('Add item to cart');
+
+  const handleAddItem = () => {
     dispatch(addToCart(item));
-  }
+  };
+
+  const handleRemoveItem = () => {
+    if (quantity > 0) {
+      dispatch(removeFromCart(item));
+    }
+  };
 
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 rounded-lg mb-4">
@@ -87,21 +99,44 @@ export const MenuItemCard = ({ item }) => {
             alt={name}
             className="w-[156px] h-[144px] object-cover rounded-xl cursor-pointer"
           />
-          <button className="absolute bottom-0 right-4 w-[120px] bg-white text-[18px] font-[800] px-4 py-2 rounded-md cursor-pointer text-center uppercase shadow-xl hover:bg-gray-100 hover:text-[rgba(2, 6, 12, 0.75)] transition-colors duration-200"
-          onClick={() => handleAddItems(item)}>
-            ADD
-          </button>
-          <p
-            className="mt-4 text-[13px] font-[200] text-center"
-            style={{ color: 'rgba(2, 6, 12, 0.45)' }}
-          >
-            Customisable
-          </p>
-        </div>
 
-        {isCustomisable && (
-          <p className="text-xs text-gray-500 mt-1">Customisable</p>
-        )}
+          {/* Conditional rendering for ADD button and + / - buttons */}
+          {quantity === 0 ? (
+            <button
+              className="w-[120px] bg-green-500 text-white text-[18px] font-bold px-4 py-2 rounded-md cursor-pointer text-center uppercase shadow-xl hover:bg-green-600 transition-colors duration-200"
+              onClick={handleAddItem}
+            >
+              ADD
+            </button>
+          ) : (
+            <div className="flex items-center justify-center mt-2">
+              <button
+                onClick={handleRemoveItem}
+                className="bg-gray-300 text-gray-700 font-semibold px-3 py-2 rounded-l-md hover:bg-gray-400"
+              >
+                -
+              </button>
+              <div className="px-4 py-2 bg-white font-bold text-lg">
+                {quantity}
+              </div>
+              <button
+                onClick={handleAddItem}
+                className="bg-gray-300 text-gray-700 font-semibold px-3 py-2 rounded-r-md hover:bg-gray-400"
+              >
+                +
+              </button>
+            </div>
+          )}
+
+          {isCustomisable && (
+            <p
+              className="mt-4 text-[13px] font-[200] text-center"
+              style={{ color: 'rgba(2, 6, 12, 0.45)' }}
+            >
+              Customisable
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );
