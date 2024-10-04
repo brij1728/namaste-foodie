@@ -1,11 +1,9 @@
 import React from 'react';
-
+import { Contact } from '../components';
 export const Contact = () => {
   return (
     <div>
-      <h1>Contact</h1>
-      <p>Phone: 555-555-5555</p>
-      <p>Email: bk10895@gmail.components</p>
+      <Contact />
     </div>
   );
 };
