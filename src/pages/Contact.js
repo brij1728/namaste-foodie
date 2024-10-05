@@ -1,6 +1,6 @@
-import React from 'react';
 import { Contact } from '../components';
-export const Contact = () => {
+import React from 'react';
+export const ContactPage = () => {
   return (
     <div>
       <Contact />

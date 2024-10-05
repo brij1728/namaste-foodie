@@ -1,5 +1,5 @@
 import { Cart, Layout } from '../components';
-import { Contact, Error, Home, LoginPage, RestaurantMenuPage } from '../pages';
+import { ContactPage, Error, Home, LoginPage, RestaurantMenuPage } from '../pages';
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
@@ -26,7 +26,7 @@ export const browserRouter = createBrowserRouter([
       },
       {
         path: '/contact',
-        element: <Contact />,
+        element: <ContactPage />,
         errorElement: <Error />,
       },
       {
