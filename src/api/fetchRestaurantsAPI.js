@@ -13,7 +13,7 @@ export const fetchRestaurantsAPI = async () => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const responseData = JSON.parse(rawResponse); 
+    const responseData = JSON.parse(rawResponse);
    
     const restaurants =
       responseData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(

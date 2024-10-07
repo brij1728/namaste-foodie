@@ -4,7 +4,6 @@ import { FaStar } from 'react-icons/fa';
 import React from 'react';
 
 export const RestaurantCard = (props) => {
-  console.log(props);
   return (
     <div className="restaurant-card shadow-lg rounded-lg transition-transform transform hover:-translate-y-1">
       <div className="relative">

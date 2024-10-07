@@ -31,7 +31,7 @@ export const RestaurantSearch = ({ restaurantData, onSearchResults }) => {
     setIsResultsVisible(false);
     onSearchResults([result]); // Show the selected restaurant as the only result
   };
-
+ 
   return (
     <div className="search-container">
       <input
