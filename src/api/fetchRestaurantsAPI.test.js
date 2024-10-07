@@ -11,6 +11,9 @@ require('jest-fetch-mock').enableMocks();
 describe('fetchRestaurantsAPI', () => {
   beforeEach(() => {
     fetch.resetMocks(); // Reset mock before each test
+
+    // Suppress console.error for this test file
+    jest.spyOn(console, 'error').mockImplementation(() => {});
   });
 
   test('should return a list of restaurants on a successful API call', async () => {

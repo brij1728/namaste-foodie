@@ -40,7 +40,7 @@ describe(' Contact Us Page Teast Cases', () => {
     //Assert that the input fields are present
     const inputFields = screen.getAllByRole('textbox');
 
-    console.log(inputFields.length);
+    //console.log(inputFields.length);
 
     //Assert that the input fields are present
     expect(inputFields.length).toBe(3);

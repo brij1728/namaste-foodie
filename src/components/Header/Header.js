@@ -11,7 +11,7 @@ export const Header = () => {
   
   // Subscribing to the cart items from the store
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
+  //console.log(cartItems);
 
   const buttonName = isLoginOpen ? 'Logout' : 'Login';
 
