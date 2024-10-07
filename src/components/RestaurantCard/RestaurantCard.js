@@ -4,6 +4,7 @@ import { FaStar } from 'react-icons/fa';
 import React from 'react';
 
 export const RestaurantCard = (props) => {
+  console.log(props);
   return (
     <div className="restaurant-card shadow-lg rounded-lg transition-transform transform hover:-translate-y-1">
       <div className="relative">
@@ -36,11 +37,11 @@ export const RestaurantCard = (props) => {
 };
 
 // Higher Order Component to add Discount Label
-export const DiscountedRestaurantCard = (RestaurantCard) => {
+export const DiscountedRestaurantCard = (Component) => {
   return (props) => (
     <div>
       {/* <label>Discounted Restaurant Card</label> */}
-      <RestaurantCard {...props} />
+      <Component {...props} />
     </div>
   );
 };
