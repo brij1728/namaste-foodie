@@ -36,6 +36,7 @@ export const RestaurantSearch = ({ restaurantData, onSearchResults }) => {
     <div className="search-container">
       <input
         type="text"
+        data-testid="search-input"
         placeholder="Search for restaurants..."
         value={searchText}
         onChange={handleChange}

@@ -5,7 +5,7 @@ import React from 'react';
 
 export const RestaurantCard = (props) => {
   return (
-    <div className="restaurant-card shadow-lg rounded-lg transition-transform transform hover:-translate-y-1">
+    <div dataid-test="restaurantCard" className="restaurant-card shadow-lg rounded-lg transition-transform transform hover:-translate-y-1">
       <div className="relative">
         <img
           src={props.image}

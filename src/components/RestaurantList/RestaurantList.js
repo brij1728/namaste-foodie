@@ -55,10 +55,15 @@ export const RestaurantList = () => {
           <RestaurantSearch
             restaurantData={restaurantData}
             onSearchResults={handleSearchResults}
+            data-testid="search-input"
           />
         </div>
         <div className="top-rated-button-container">
-          <button className="top-rated-button" onClick={handleTopRated}>
+          <button
+            className="top-rated-button"
+            onClick={handleTopRated}
+            data-testid="top-rated-button"
+          >
             {topRated ? 'Show All Restaurants' : 'Show Top Rated Restaurants'}
           </button>
         </div>
@@ -72,7 +77,11 @@ export const RestaurantList = () => {
               <ShimmerRestaurantCard key={index} />
             ))
           : displayedRestaurants?.map((restaurant) => (
-              <Link key={restaurant?.id} to={`/restaurants/${restaurant.id}`}>
+              <Link
+                key={restaurant?.id}
+                to={`/restaurants/${restaurant.id}`}
+                data-testid="restaurantCard"
+              >
                 {restaurant.discount ? (
                   <RestaurantWithDiscount {...restaurant} />
                 ) : (
