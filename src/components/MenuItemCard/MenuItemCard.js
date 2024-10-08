@@ -10,7 +10,22 @@ export const MenuItemCard = ({ item }) => {
   // Selector to get the current quantity from the cart
   const cartItems = useSelector((state) => state.cart.items);
   console.log('cartItems', cartItems);
-  const quantity = cartItems.length || 0; // Get quantity from Redux store
+
+  // Find the quantity of the specific item in the cart
+  const cartItem = cartItems.find(
+    (cartItem) => cartItem.id === item.id
+  );
+  const quantity = cartItem ? cartItem.quantity : 0;
+
+   const handleAddItem = () => {
+     dispatch(addToCart(item));
+   };
+
+   const handleRemoveItem = () => {
+     if (quantity > 0) {
+       dispatch(removeFromCart(item));
+     }
+   };
 
   const {
     name,
@@ -22,21 +37,13 @@ export const MenuItemCard = ({ item }) => {
     offerTags,
     itemAttribute,
     ratings,
-  } = item.card.info;
+  } = item || {};
 
   const firstOfferTag = offerTags && offerTags.length > 0 ? offerTags[0] : null;
   const vegClassifier = itemAttribute?.vegClassifier;
   const rating = ratings?.aggregatedRating;
 
-  const handleAddItem = () => {
-    dispatch(addToCart(item));
-  };
-
-  const handleRemoveItem = () => {
-    if (quantity > 0) {
-      dispatch(removeFromCart(item));
-    }
-  };
+ 
 
   return (
     <div className="flex flex-col md:flex-row items-start md:items-center justify-between p-4 rounded-lg mb-4">

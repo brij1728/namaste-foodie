@@ -7,11 +7,16 @@ import { useSelector } from 'react-redux';
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
-  const navigate = useNavigate(); 
-  
+  const navigate = useNavigate();
+
   // Subscribing to the cart items from the store
   const cartItems = useSelector((store) => store.cart.items);
   //console.log(cartItems);
+  // Calculate the total number of items in the cart
+  const totalCartItems = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   const buttonName = isLoginOpen ? 'Logout' : 'Login';
 
@@ -47,8 +52,8 @@ export const Header = () => {
           <li>
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className='font-bold'>
-            <Link to="/cart">Cart ({cartItems.length})</Link>
+          <li className="font-bold">
+            <Link to="/cart">Cart ({totalCartItems})</Link>
           </li>
           <button onClick={toggleLogin}>{buttonName}</button>
         </ul>

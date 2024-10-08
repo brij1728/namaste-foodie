@@ -1,34 +1,35 @@
+// cartSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 // Creating the cart slice
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
-    items: [], // Initial state for cart items
+    items: [], // Array to store items added to the cart
   },
   reducers: {
+    // Add item to the cart or increase its quantity
     addToCart: (state, action) => {
-      // Check if the item already exists in the cart
       const existingItem = state.items.find(
         (item) => item.id === action.payload.id
       );
 
       if (existingItem) {
-        // If item exists, increment its quantity
+        // If the item already exists, increment its quantity
         existingItem.quantity += 1;
       } else {
-        // If item doesn't exist, add it to the cart with quantity 1
+        // If it's a new item, add it to the cart with quantity = 1
         state.items.push({ ...action.payload, quantity: 1 });
       }
     },
+    // Remove item from the cart or reduce its quantity
     removeFromCart: (state, action) => {
-      // Find the item in the cart
       const existingItem = state.items.find(
         (item) => item.id === action.payload.id
       );
 
       if (existingItem && existingItem.quantity > 1) {
-        // If the item exists and its quantity is greater than 1, decrement its quantity
+        // If the quantity is more than 1, decrement it
         existingItem.quantity -= 1;
       } else {
         // Otherwise, remove the item from the cart
@@ -37,15 +38,15 @@ const cartSlice = createSlice({
         );
       }
     },
-    clearToCart: (state) => {
-      // Clear the cart by setting the items array to an empty array
-      state.items.length = 0;
+    // Clear the entire cart
+    clearCart: (state) => {
+      state.items = [];
     },
   },
 });
 
 // Exporting actions for dispatching
-export const { addToCart, removeFromCart, clearToCart } = cartSlice.actions;
+export const { addToCart, removeFromCart, clearCart } = cartSlice.actions;
 
 // Selector to get items in the cart from the state
 export const selectCartItems = (state) => state.cart.items;

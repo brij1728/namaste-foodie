@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { MenuItemCard } from '../MenuItemCard';
-import { clearToCart } from '../../redux/slices/cartSlice';
+import { clearCart } from '../../redux/slices/cartSlice';
 
 export const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
+  console.log('cartItems', cartItems);
   const dispatch = useDispatch();
   const [isClearing, setIsClearing] = useState(false);
 
@@ -13,9 +14,9 @@ export const Cart = () => {
     if (window.confirm('Are you sure you want to clear the cart?')) {
       setIsClearing(true);
       setTimeout(() => {
-        dispatch(clearToCart());
+        dispatch(clearCart());
         setIsClearing(false);
-      }, 500); 
+      }, 500);
     }
   };
 
@@ -32,7 +33,7 @@ export const Cart = () => {
           </button>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             {cartItems.map((item) => (
-              <MenuItemCard key={item.card.info.id} item={item} />
+              <MenuItemCard key={item?.card?.info?.id || item.id} item={item} />
             ))}
           </div>
         </>
@@ -42,22 +43,3 @@ export const Cart = () => {
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
