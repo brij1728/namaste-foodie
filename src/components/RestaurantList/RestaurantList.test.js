@@ -10,12 +10,24 @@ import { restaurantList } from '../../data/restaurantList';
 // Mock the API call
 jest.mock('../../api/fetchRestaurantsAPI');
 
+//before all tests
+beforeAll(() => {
+  //console.log('beforeAll');
+});
+
 // Suppress warnings in tests
 beforeEach(() => {
+  //console.log('beforeEach');
   jest.spyOn(console, 'error').mockImplementation(() => {});
 });
 
+//after all tests
+afterAll(() => {
+  //console.log('afterAll');
+});
+
 afterEach(() => {
+  //console.log('afterEach');
   console.error.mockRestore();
 });
 
@@ -80,3 +92,5 @@ describe('RestaurantList Component', () => {
     expect(topRatedCards).toHaveLength(7); // Assuming 6 restaurants are top-rated (rating >= 4.5)
   });
 });
+
+
