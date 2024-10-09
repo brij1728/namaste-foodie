@@ -59,7 +59,12 @@ export const MenuItemCard = ({ item }) => {
           )}
         </div>
 
-        <h3 className="text-lg font-semibold cursor-pointer">{name}</h3>
+        <h3
+          data-testid={`item-name-${item.id}`}
+          className="text-lg font-semibold cursor-pointer"
+        >
+          {name}
+        </h3>
 
         <div className="flex items-center mt-1">
           <p className="text-base font-semibold cursor-pointer">
