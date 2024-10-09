@@ -6,7 +6,7 @@ import { RestaurantSearch } from './RestaurantSearch';
 import { restaurantList } from '../../data/restaurantList';
 
 describe('RestaurantSearch Component', () => {
-  //test for the input field
+  // Test for rendering the input field
   test('should render the input field', () => {
     render(
       <RestaurantSearch
@@ -14,42 +14,33 @@ describe('RestaurantSearch Component', () => {
         onSearchResults={() => {}}
       />
     );
-
-    // Check if the input field is rendered
     const inputElement = screen.getByPlaceholderText(
       'Search for restaurants...'
     );
     expect(inputElement).toBeInTheDocument();
   });
 
-  //test for the search results
+  // Test for filtering restaurants based on search input
   test('should filter restaurants based on search input', async () => {
     const mockOnSearchResults = jest.fn();
-
     render(
       <RestaurantSearch
         restaurantData={restaurantList}
         onSearchResults={mockOnSearchResults}
       />
     );
-
     const inputElement = screen.getByPlaceholderText(
       'Search for restaurants...'
     );
 
-    // Simulate typing into the search input
     fireEvent.change(inputElement, { target: { value: 'Pizza' } });
 
-    // Check that the filtered results are displayed
     await waitFor(() => {
       expect(screen.getByText('Pizza Hut')).toBeInTheDocument();
       expect(screen.getByText("Domino's Pizza")).toBeInTheDocument();
     });
 
-    // Ensure that non-matching restaurants are not displayed
     expect(screen.queryByText('Burger King')).not.toBeInTheDocument();
-
-    // Check that onSearchResults is called with the filtered data
     expect(mockOnSearchResults).toHaveBeenCalledWith(
       expect.arrayContaining([
         expect.objectContaining({ resName: 'Pizza Hut' }),
@@ -58,68 +49,131 @@ describe('RestaurantSearch Component', () => {
     );
   });
 
-  //test for the no results found
+  // Test for showing "No restaurants found" when no results match
   test('should show "No restaurants found" when no results match', async () => {
     const mockOnSearchResults = jest.fn();
-
     render(
       <RestaurantSearch
         restaurantData={restaurantList}
         onSearchResults={mockOnSearchResults}
       />
     );
-
     const inputElement = screen.getByPlaceholderText(
       'Search for restaurants...'
     );
 
-    // Simulate typing a non-matching string
     fireEvent.change(inputElement, {
       target: { value: 'NonExistentRestaurant' },
     });
 
-    // Check that the "No restaurants found" message is displayed
     await waitFor(() => {
       expect(screen.getByText('No restaurants found')).toBeInTheDocument();
     });
 
-    // Ensure that onSearchResults is called with an empty array
     expect(mockOnSearchResults).toHaveBeenCalledWith([]);
   });
 
-  //test for selecting a restaurant from the search results
+  // Test for selecting a restaurant from the search results
   test('should select restaurant from the search results', async () => {
     const mockOnSearchResults = jest.fn();
-
     render(
       <RestaurantSearch
         restaurantData={restaurantList}
         onSearchResults={mockOnSearchResults}
       />
     );
-
     const inputElement = screen.getByPlaceholderText(
       'Search for restaurants...'
     );
 
-    // Simulate typing into the search input
     fireEvent.change(inputElement, { target: { value: 'Mc' } });
 
-    // Wait for the search results to appear
     await waitFor(() => {
       expect(screen.getByText("McDonald's")).toBeInTheDocument();
     });
 
-    // Simulate clicking on a search result
     const resultItem = screen.getByText("McDonald's");
     fireEvent.mouseDown(resultItem);
 
-    // Check that the input field is updated with the selected restaurant name
     expect(inputElement.value).toBe("McDonald's");
-
-    // Ensure that onSearchResults is called with the selected restaurant
     expect(mockOnSearchResults).toHaveBeenCalledWith([
       expect.objectContaining({ resName: "McDonald's" }),
     ]);
+  });
+
+  // Test for showing all restaurants when the input is cleared
+  test('should show all restaurants when the input is cleared', async () => {
+    const mockOnSearchResults = jest.fn();
+    render(
+      <RestaurantSearch
+        restaurantData={restaurantList}
+        onSearchResults={mockOnSearchResults}
+      />
+    );
+    const inputElement = screen.getByPlaceholderText(
+      'Search for restaurants...'
+    );
+
+    fireEvent.change(inputElement, { target: { value: 'Pizza' } });
+
+    await waitFor(() => {
+      expect(screen.getByText('Pizza Hut')).toBeInTheDocument();
+    });
+
+    fireEvent.change(inputElement, { target: { value: '' } });
+
+    await waitFor(() => {
+      expect(mockOnSearchResults).toHaveBeenCalledWith(restaurantList);
+    });
+  });
+
+  // Test for handling case insensitivity in the search
+  test('should handle case insensitivity in the search', async () => {
+    const mockOnSearchResults = jest.fn();
+    render(
+      <RestaurantSearch
+        restaurantData={restaurantList}
+        onSearchResults={mockOnSearchResults}
+      />
+    );
+    const inputElement = screen.getByPlaceholderText(
+      'Search for restaurants...'
+    );
+
+    fireEvent.change(inputElement, { target: { value: 'pizza' } });
+
+    await waitFor(() => {
+      expect(screen.getByText('Pizza Hut')).toBeInTheDocument();
+    });
+
+    expect(mockOnSearchResults).toHaveBeenCalledWith(
+      expect.arrayContaining([
+        expect.objectContaining({ resName: 'Pizza Hut' }),
+      ])
+    );
+  });
+
+  // Test for input focus and blur behavior
+  test('should display results when input is focused and hide when blurred', async () => {
+    const mockOnSearchResults = jest.fn();
+    render(
+      <RestaurantSearch
+        restaurantData={restaurantList}
+        onSearchResults={mockOnSearchResults}
+      />
+    );
+    const inputElement = screen.getByPlaceholderText(
+      'Search for restaurants...'
+    );
+
+    fireEvent.focus(inputElement);
+    expect(screen.queryByText('No restaurants found')).not.toBeInTheDocument();
+
+    fireEvent.blur(inputElement);
+    await waitFor(() => {
+      expect(
+        screen.queryByText('No restaurants found')
+      ).not.toBeInTheDocument();
+    });
   });
 });
