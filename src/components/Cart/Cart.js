@@ -26,6 +26,7 @@ export const Cart = () => {
       {cartItems.length > 0 ? (
         <>
           <button
+          data-testid="clear-cart"
             onClick={handleClearCart}
             className="bg-red-500 text-white font-semibold px-4 py-2 rounded-md shadow-lg hover:bg-red-600 transition-colors duration-200"
           >

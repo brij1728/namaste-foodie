@@ -22,7 +22,7 @@ export const RestaurantCategory = ({ title, item, isOpen, onToggle }) => {
         <div className="pl-4">
           {item?.map((menuItem, index) => (
             <div key={menuItem.card.info.id}>
-              <MenuItemCard item={menuItem} />
+              <MenuItemCard item={menuItem.card.info} />
               {index < item.length - 1 && (
                 <hr className="border-t border-gray-200 my-4" />
               )}

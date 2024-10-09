@@ -1,7 +1,6 @@
 import { addToCart, removeFromCart } from '../../redux/slices/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
-import React from 'react';
 import { domainImageURL } from '../../constants/apiURL';
 
 export const MenuItemCard = ({ item }) => {
@@ -9,7 +8,7 @@ export const MenuItemCard = ({ item }) => {
 
   // Selector to get the current quantity from the cart
   const cartItems = useSelector((state) => state.cart.items);
-  console.log('cartItems', cartItems);
+  //console.log('cartItems', cartItems);
 
   // Find the quantity of the specific item in the cart
   const cartItem = cartItems.find(
