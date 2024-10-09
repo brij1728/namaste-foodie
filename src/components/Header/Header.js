@@ -9,10 +9,7 @@ export const Header = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Subscribing to the cart items from the store
   const cartItems = useSelector((store) => store.cart.items);
-  //console.log(cartItems);
-  // Calculate the total number of items in the cart
   const totalCartItems = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
@@ -23,7 +20,7 @@ export const Header = () => {
   const toggleLogin = () => {
     setIsLoginOpen(!isLoginOpen);
     if (!isLoginOpen) {
-      navigate('/login'); // Correct usage of navigate
+      navigate('/login');
     }
   };
 
@@ -38,7 +35,10 @@ export const Header = () => {
           <img src={foodLogo} alt="logo" className="logo" />
         </Link>
       </div>
-      <div className={`nav-items ${isMenuOpen ? 'active' : ''}`}>
+      <div
+        className={`nav-items ${isMenuOpen ? 'active' : ''}`}
+        data-testid="nav-items"
+      >
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -59,7 +59,9 @@ export const Header = () => {
         </ul>
       </div>
       <div
+        aria-label="hamburger menu"
         className={`hamburger ${isMenuOpen ? 'open' : ''}`}
+        role="button"
         onClick={toggleMenu}
       >
         <div></div>

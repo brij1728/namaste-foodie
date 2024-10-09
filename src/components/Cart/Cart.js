@@ -6,7 +6,7 @@ import { clearCart } from '../../redux/slices/cartSlice';
 
 export const Cart = () => {
   const cartItems = useSelector((state) => state.cart.items);
-  console.log('cartItems', cartItems);
+  //console.log('cartItems', cartItems);
   const dispatch = useDispatch();
   const [isClearing, setIsClearing] = useState(false);
 
