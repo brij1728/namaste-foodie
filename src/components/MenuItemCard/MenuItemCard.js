@@ -49,11 +49,17 @@ export const MenuItemCard = ({ item }) => {
       <div className="flex-1">
         <div className="mb-1">
           {vegClassifier === 'VEG' ? (
-            <div className="w-4 h-4 border-2 border-green-600 flex items-center justify-center">
+            <div
+              className="w-4 h-4 border-2 border-green-600 flex items-center justify-center"
+              data-testid="veg-indicator"
+            >
               <div className="w-2 h-2 bg-green-600 rounded-full"></div>
             </div>
           ) : (
-            <div className="w-4 h-4 border-2 border-red-600 flex items-center justify-center">
+            <div
+              className="w-4 h-4 border-2 border-red-600 flex items-center justify-center"
+              data-testid="veg-indicator"
+            >
               <div className="w-2 h-2 bg-red-600 rounded-full"></div>
             </div>
           )}
