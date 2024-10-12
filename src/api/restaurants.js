@@ -3,7 +3,8 @@ import axios from 'axios';
 const fetchRestaurantsHandler = async (req, res) => {
   try {
     const response = await axios.get(
-      'https://www.swiggy.com/dapi/restaurants/list/v5',
+//      'https://www.swiggy.com/dapi/restaurants/list/v5',
+       '/dapi/restaurants/list/v5',
       {
         params: {
           lat: '12.9715987',
