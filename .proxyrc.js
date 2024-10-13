@@ -5,7 +5,8 @@ module.exports = function(app) {
   app.use(
     '/dapi',
     createProxyMiddleware({
-      target: 'http://localhost:21234/dapi',
+      // target: 'http://localhost:21234/dapi',
+      target: 'https://www.swiggy.com/dapi',
       changeOrigin: true,
       // Removed the pathRewrite option
     })
