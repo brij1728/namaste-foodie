@@ -54,13 +54,13 @@ export const Header = () => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/grocery">Grocery</Link>
-          </li>
+          </li> */}
           <li className="font-bold">
             <Link to="/cart">Cart ({totalCartItems})</Link>
           </li>
-          <button onClick={toggleLogin}>{buttonName}</button>
+          {/* <button onClick={toggleLogin}>{buttonName}</button> */}
         </ul>
       </div>
       <div
