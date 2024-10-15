@@ -3,7 +3,9 @@ import { domainImageURL } from '../constants/apiURL';
 export const fetchRestaurantsAPI = async () => {
   try {
     // Fetch restaurants via your serverless function on Vercel
-    const response = await fetch('/api/restaurants');
+    // Use the environment variable to determine the base URL
+    const baseURL = process.env.REACT_APP_API_URL || '';
+    const response = await fetch(`${baseURL}/api/restaurants`);
     console.log('response status:', response.status);
 
     const rawResponse = await response.text();

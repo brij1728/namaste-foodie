@@ -1,14 +1,15 @@
 export default async function handler(req, res) {
   try {
-    const swiggyAPIURL =
-      '/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
+    const swiggyAPIURL = process.env.SWIGGY_API_URL; // Use the environment variable
 
     // Fetch restaurant data from Swiggy's API
     const response = await fetch(swiggyAPIURL, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        // Add more headers if needed
+        Referer: 'https://www.swiggy.com',
+        'User-Agent':
+          'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
       },
     });
 
