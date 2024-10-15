@@ -6,7 +6,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Missing restaurantId in query' });
     }
 
-    // Use the environment variable or default API URL
+    // Use the environment variable for Swiggy Menu API URL or default it
     const swiggyMenuAPIURL =
       process.env.SWIGGY_MENU_API_URL ||
       `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${restaurantId}`;
