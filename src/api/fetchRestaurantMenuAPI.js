@@ -4,7 +4,7 @@ export const fetchRestaurantMenuAPI = async (restaurantId) => {
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:5000' // Local development API
         : process.env.REACT_APP_API_URL ||
-          'https://namaste-react-neon-eta.vercel.app'; // Production URL
+          'https://namaste-react-foodie.vercel.app/'; // Production URL
 
     // console.log(
     //   `Fetching menu for restaurantId: ${restaurantId} from ${baseURL}/api/restaurantMenu`

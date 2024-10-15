@@ -7,7 +7,7 @@ export const fetchRestaurantsAPI = async () => {
       process.env.NODE_ENV === 'development'
         ? 'http://localhost:5000' // Use relative URL in development (Parcel is running on localhost:1234)
         : process.env.REACT_APP_API_URL ||
-          'https://namaste-react-neon-eta.vercel.app'; // Production URL
+          'https://namaste-react-foodie.vercel.app/'; // Production URL
 
     // Fetch restaurants via your serverless function on Vercel or local dev API
     const response = await fetch(`${baseURL}/api/restaurants`);
