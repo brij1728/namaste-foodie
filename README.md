@@ -168,11 +168,11 @@ test('renders restaurant list correctly', () => {
 
 **Restaurant Listing with Shimmer Effect:**
 
-![Restaurant Listing](https://your-screenshot-url)
+![Restaurant Listing](/assets/Namaste-Foodie-App.png)
 
 **Menu with Add/Remove Items:**
 
-![Menu UI](https://your-screenshot-url)
+![Menu UI](/assets/Namaste-Foodie-Menu.png)
 
 ---
 
