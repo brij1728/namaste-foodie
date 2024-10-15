@@ -17,6 +17,7 @@ const devAgent = new https.Agent({
 app.get('/api/restaurants', async (req, res) => {
   try {
     const swiggyAPIURL =
+      process.env.SWIGGY_API_URL ||
       'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
 
     // Conditionally use the devAgent only in development
