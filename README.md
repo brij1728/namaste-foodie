@@ -3,6 +3,8 @@
 
 ### A React-based Restaurant Discovery App
 
+[Namaste Foodie Demo](./assets/namaste_foodie.mp4)
+
 Namaste Foodie is a dynamic restaurant discovery application built using React, designed for seamless integration with Swiggy's live API. The app provides users with live restaurant data, optimized for performance and scalability, utilizing lazy loading, custom hooks, Redux for state management, and CORS Proxy to handle API requests efficiently. Inspired by Akshay Saini’s **Namaste React** series, this app is also equipped with unit tests to ensure code reliability.
 
 ### 🚀 Project Demo:
