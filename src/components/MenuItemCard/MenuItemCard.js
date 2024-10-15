@@ -126,17 +126,17 @@ export const MenuItemCard = ({ item }) => {
               ADD
             </button>
           ) : (
-            <div className="z-50 flex items-center justify-center mt-2 absolute  -bottom-1 -right-1 left-4 w-[120px] h-[38px]  bg-white text-[#1BA672] rounded-md text-[18px] font-bold ">
+            <div className="z-50 flex items-center justify-between mt-2 absolute  -bottom-1 -right-1 left-4 w-[120px] h-[38px]  bg-white text-[#1BA672] rounded-md text-[18px] font-bold ">
               <button
                 onClick={handleRemoveItem}
-                className="  px-3 py-2 hover:bg-gray-300"
+                className="  px-3 py-2 hover:bg-gray-300 transition-all duration-200"
               >
                 -
               </button>
               <div className="px-4 py-2 text-lg">{quantity}</div>
               <button
                 onClick={handleAddItem}
-                className="  px-3 py-2 hover:bg-gray-300"
+                className="  px-3 py-2 hover:bg-gray-300 transition-all duration-200"
               >
                 +
               </button>
