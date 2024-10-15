@@ -1,6 +1,9 @@
 export default async function handler(req, res) {
   try {
-    const swiggyAPIURL = process.env.SWIGGY_API_URL; // Use the environment variable
+    // Use the environment variable to store the Swiggy API URL or mock it
+    const swiggyAPIURL =
+      process.env.SWIGGY_API_URL ||
+      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING';
 
     // Fetch restaurant data from Swiggy's API
     const response = await fetch(swiggyAPIURL, {
@@ -18,7 +21,9 @@ export default async function handler(req, res) {
     }
 
     const data = await response.json();
-    res.status(200).json(data); // Send the data to the frontend
+
+    // Respond with the restaurant data
+    res.status(200).json(data);
   } catch (error) {
     console.error('Error in serverless function:', error);
     res.status(500).json({ message: 'Failed to fetch restaurants' });
