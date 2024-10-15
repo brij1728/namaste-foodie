@@ -6,10 +6,10 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Missing restaurantId in query' });
     }
 
-    // Use the environment variable for Swiggy Menu API URL or default it
-    const swiggyMenuAPIURL =
-      process.env.SWIGGY_MENU_API_URL ||
-      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${restaurantId}`;
+    // Use the new working Swiggy API URL format for restaurant menu
+    const swiggyMenuAPIURL = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${restaurantId}`;
+
+    console.log(`Fetching menu from: ${swiggyMenuAPIURL}`);
 
     // Fetch restaurant menu data from Swiggy API
     const response = await fetch(swiggyMenuAPIURL, {
@@ -22,15 +22,20 @@ export default async function handler(req, res) {
       },
     });
 
+    // Handle errors in the response
     if (!response.ok) {
+      console.error(
+        `Error fetching restaurant menu, status: ${response.status}`
+      );
       throw new Error(
         `Error fetching restaurant menu, status: ${response.status}`
       );
     }
 
+    // Parse and return the menu data
     const menuData = await response.json();
+    console.log('Fetched menu data:', menuData);
 
-    // Respond with the restaurant menu data
     res.status(200).json(menuData);
   } catch (error) {
     console.error('Error in serverless function fetching menu:', error);
