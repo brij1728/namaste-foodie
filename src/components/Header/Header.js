@@ -30,9 +30,11 @@ export const Header = () => {
               className="w-10 h-10 md:w-12 md:h-12"
             />
           </Link>
+          <Link to="/">
           <h1 className="ml-4 text-2xl font-bold text-gray-800">
             Namaste Foodie
           </h1>
+          </Link>
         </div>
 
         {/* Navigation Items */}
