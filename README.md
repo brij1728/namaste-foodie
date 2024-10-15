@@ -6,10 +6,10 @@
 Namaste Foodie is a dynamic restaurant discovery application built using React, designed for seamless integration with Swiggy's live API. The app provides users with live restaurant data, optimized for performance and scalability, utilizing lazy loading, custom hooks, Redux for state management, and CORS Proxy to handle API requests efficiently. Inspired by Akshay Saini’s **Namaste React** series, this app is also equipped with unit tests to ensure code reliability.
 
 ### 🚀 Project Demo:
-[Live App Link](https://namaste-react-neon-eta.vercel.app/)
+[Live App Link](https://namaste-react-foodie.vercel.app/)
 
 ### 📁 GitHub Repo:
-[GitHub Repo Link](https://github.com/brij1728/namaste-react)
+[GitHub Repo Link](https://github.com/brij1728/namaste-foodie)
 
 ---
 
@@ -100,7 +100,7 @@ To get started with Namaste Foodie locally, follow these steps:
 
 1. **Clone the Repository**  
    ```bash
-   git clone https://github.com/brij1728/namaste-react
+   git clone https://github.com/brij1728/namaste-foodie
    ```
 
 2. **Install Dependencies**  
