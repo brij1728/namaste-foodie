@@ -51,7 +51,7 @@ export const RestaurantMenu = () => {
         <p>Rating: {avgRating}</p>
       </div>
 
-      <ul>
+      <div className="w-full">
         {categories.length > 0 ? (
           categories.map((item, index) => {
             const categoryTitle = item.card.card.title;
@@ -70,7 +70,7 @@ export const RestaurantMenu = () => {
         ) : (
           <li>No menu items available</li>
         )}
-      </ul>
+      </div>
     </div>
   );
 };

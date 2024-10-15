@@ -8,7 +8,7 @@ export const RestaurantCategory = ({ title, item, isOpen, onToggle }) => {
 		onToggle();
 	}
   return (
-    <div className="mb-4 bg-white shadow-xl w-full p-4">
+    <div className="mb-4 bg-gray-100  w-full p-4">
       <h1
         className="text-xl font-bold cursor-pointer py-2 flex justify-between items-center"
         onClick={handleToggle}
@@ -19,7 +19,7 @@ export const RestaurantCategory = ({ title, item, isOpen, onToggle }) => {
         <span>{isOpen ? <FaAngleUp /> : <FaAngleDown />}</span>
       </h1>
       {isOpen && (
-        <div className="pl-4">
+        <div className="pl-4 ">
           {item?.map((menuItem, index) => (
             <div key={menuItem.card.info.id}>
               <MenuItemCard item={menuItem.card.info} />

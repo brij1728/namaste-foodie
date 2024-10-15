@@ -120,13 +120,13 @@ export const MenuItemCard = ({ item }) => {
           {/* Conditional rendering for ADD button and + / - buttons */}
           {quantity === 0 ? (
             <button
-              className="absolute  -bottom-1 -right-1 left-4 w-[120px] h-[38px] bg-white text-[#1BA672] text-[18px] font-bold px-4 py-2 rounded-md cursor-pointer text-center uppercase shadow-xl hover:bg-gray-300 transition-colors duration-200"
+              className="z-50 absolute  -bottom-1 -right-1 left-4 w-[120px] h-[38px] bg-white text-[#1BA672] text-[18px] font-bold px-4 py-2 rounded-md cursor-pointer text-center uppercase shadow-xl hover:bg-gray-300 transition-colors duration-200"
               onClick={handleAddItem}
             >
               ADD
             </button>
           ) : (
-            <div className="flex items-center justify-center mt-2 absolute  -bottom-1 -right-1 left-4 w-[120px] h-[38px]  bg-white text-[#1BA672] rounded-md text-[18px] font-bold ">
+            <div className="z-50 flex items-center justify-center mt-2 absolute  -bottom-1 -right-1 left-4 w-[120px] h-[38px]  bg-white text-[#1BA672] rounded-md text-[18px] font-bold ">
               <button
                 onClick={handleRemoveItem}
                 className="  px-3 py-2 hover:bg-gray-300"
