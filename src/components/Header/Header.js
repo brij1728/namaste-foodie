@@ -37,6 +37,9 @@ export const Header = () => {
           <img src={foodLogo} alt="logo" className="logo" />
         </Link>
       </div>
+      <div>
+        <h1 className="text-2xl font-bold">Namaste Foodie</h1>
+      </div>
       <div
         className={`nav-items ${isMenuOpen ? 'active' : ''}`}
         data-testid="nav-items"
