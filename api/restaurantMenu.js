@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     // Use the environment variable or default API URL
     const swiggyMenuAPIURL =
       process.env.SWIGGY_MENU_API_URL ||
-      `https://www.swiggy.com/dapi/menu/v4/full?lat=12.9715987&lng=77.5945627&menuId=${restaurantId}`;
+      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${restaurantId}`;
 
     // Fetch restaurant menu data from Swiggy API
     const response = await fetch(swiggyMenuAPIURL, {
