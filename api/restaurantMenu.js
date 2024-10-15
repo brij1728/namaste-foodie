@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     // Use the new working Swiggy API URL format for restaurant menu
     const swiggyMenuAPIURL = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9715987&lng=77.5945627&restaurantId=${restaurantId}`;
 
-    console.log(`Fetching menu from: ${swiggyMenuAPIURL}`);
+    //console.log(`Fetching menu from: ${swiggyMenuAPIURL}`);
 
     // Fetch restaurant menu data from Swiggy API
     const response = await fetch(swiggyMenuAPIURL, {

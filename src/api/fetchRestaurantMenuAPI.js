@@ -6,9 +6,9 @@ export const fetchRestaurantMenuAPI = async (restaurantId) => {
         : process.env.REACT_APP_API_URL ||
           'https://namaste-react-neon-eta.vercel.app'; // Production URL
 
-    console.log(
-      `Fetching menu for restaurantId: ${restaurantId} from ${baseURL}/api/restaurantMenu`
-    );
+    // console.log(
+    //   `Fetching menu for restaurantId: ${restaurantId} from ${baseURL}/api/restaurantMenu`
+    // );
 
     // Fetch the menu data from your serverless function
     const response = await fetch(
@@ -23,7 +23,7 @@ export const fetchRestaurantMenuAPI = async (restaurantId) => {
 
     // Parse the menu data
     const responseMenu = await response.json();
-    console.log('Fetched menu:', responseMenu);
+    //console.log('Fetched menu:', responseMenu);
 
     return responseMenu;
   } catch (error) {
