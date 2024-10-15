@@ -1,6 +1,10 @@
-export const fetchRestaurantMenuAPI = async (restaurantId, MENUAPIURL) => {
+export const fetchRestaurantMenuAPI = async (restaurantId) => {
   try {
-    const response = await fetch(`${MENUAPIURL}${restaurantId}`);
+    // Fetch restaurant menu via your serverless function on Vercel
+    const response = await fetch(
+      `/api/restaurantMenu?restaurantId=${restaurantId}`
+    );
+
     if (!response.ok) {
       throw new Error('Failed to fetch restaurant menu data');
     }

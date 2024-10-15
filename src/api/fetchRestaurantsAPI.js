@@ -1,20 +1,21 @@
-import { domainImageURL, swiggyAPIURL } from '../constants/apiURL';
+import { domainImageURL } from '../constants/apiURL';
 
 export const fetchRestaurantsAPI = async () => {
   try {
-   
-    const response = await fetch(`${swiggyAPIURL}`);
+    // Fetch restaurants via your serverless function on Vercel
+    const response = await fetch('/api/restaurants');
+    console.log('response status:', response.status);
 
     const rawResponse = await response.text();
-    // console.log('Raw response:', rawResponse);
+    console.log('rawResponse:', rawResponse); // Log the entire raw response
 
-    // Check if response is valid before trying to parse JSON
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    const responseData = JSON.parse(rawResponse);
-   
+    const responseData = JSON.parse(rawResponse); // This might fail if rawResponse isn't JSON
+    console.log('responseData:', responseData);
+
     const restaurants =
       responseData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants.map(
         (restaurant) => ({
@@ -33,6 +34,7 @@ export const fetchRestaurantsAPI = async () => {
             : null,
         })
       );
+    console.log('restaurants:', restaurants);
 
     return restaurants;
   } catch (error) {
