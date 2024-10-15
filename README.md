@@ -1,6 +1,3 @@
-Here’s an updated **README** for your project that incorporates all the key features, including unit tests using Jest and React Testing Library:
-
----
 
 # Namaste Foodie 🍽️
 
@@ -210,4 +207,3 @@ Feel free to update the links to your screenshots, API URLs, and customize the s
 
 --- 
 
-This README is comprehensive, provides clear instructions, and outlines the features, tech stack, and steps to get started with development. Let me know if you need further adjustments!
